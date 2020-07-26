@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		337CD86824CDF78F005891E7 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Array.swift; path = HostButler/Array.swift; sourceTree = SOURCE_ROOT; };
+		337CD86824CDF78F005891E7 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "HostButler/New Group/Array.swift"; sourceTree = SOURCE_ROOT; };
 		337CD86B24CDFE89005891E7 /* PortsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortsListView.swift; sourceTree = "<group>"; };
 		33E37D9524CDD76C00698877 /* ObservablePorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservablePorts.swift; sourceTree = "<group>"; };
 		33E3C1A624CDC912005B096B /* HostButler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HostButler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,20 +50,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		337CD86724CDF77E005891E7 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				337CD86824CDF78F005891E7 /* Array.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		337CD86A24CDFE7A005891E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				337CD86B24CDFE89005891E7 /* PortsListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		337CD86D24CE269C005891E7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				337CD86824CDF78F005891E7 /* Array.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		33E3C19D24CDC912005B096B = {
@@ -86,9 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				337CD86A24CDFE7A005891E7 /* Views */,
-				337CD86724CDF77E005891E7 /* Extensions */,
 				33E3C1C224CDCE4E005B096B /* Helpers */,
 				33E3C1A924CDC912005B096B /* AppDelegate.swift */,
+				337CD86D24CE269C005891E7 /* Extensions */,
 				33E3C1AB24CDC912005B096B /* ContentView.swift */,
 				33E3C1AD24CDC914005B096B /* Assets.xcassets */,
 				33E3C1B224CDC914005B096B /* Main.storyboard */,
