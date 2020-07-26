@@ -9,9 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var ports = ObservablePorts()
+  
     var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        VStack {
+//            HStack {
+//                Button(action: {
+//                    self.ports.scan()
+//                }) {
+//                    Text("scan")
+//                }
+//            }.padding(20)
+            PortsListView(ports: self.ports.ports)
+        }
+            .frame(minWidth: 200, idealWidth: 320, maxWidth: 600, minHeight: 100, idealHeight: 200, maxHeight: 800, alignment: .center)
+            .onAppear {
+                self.ports.scan()
+            }
     }
 }
 

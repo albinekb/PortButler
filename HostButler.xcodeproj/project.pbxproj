@@ -3,18 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		337CD86924CDF78F005891E7 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86824CDF78F005891E7 /* Array.swift */; };
+		337CD86C24CDFE89005891E7 /* PortsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86B24CDFE89005891E7 /* PortsListView.swift */; };
+		33E37D9424CDD6AE00698877 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 33E37D9324CDD6AE00698877 /* ShellOut */; };
+		33E37D9624CDD76C00698877 /* ObservablePorts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E37D9524CDD76C00698877 /* ObservablePorts.swift */; };
 		33E3C1AA24CDC912005B096B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1A924CDC912005B096B /* AppDelegate.swift */; };
 		33E3C1AC24CDC912005B096B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1AB24CDC912005B096B /* ContentView.swift */; };
 		33E3C1AE24CDC914005B096B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E3C1AD24CDC914005B096B /* Assets.xcassets */; };
 		33E3C1B124CDC914005B096B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E3C1B024CDC914005B096B /* Preview Assets.xcassets */; };
 		33E3C1B424CDC914005B096B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33E3C1B224CDC914005B096B /* Main.storyboard */; };
+		33E3C1C124CDCE18005B096B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1C024CDCE18005B096B /* MainViewController.swift */; };
+		33E3C1C424CDCE5C005B096B /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1C324CDCE5C005B096B /* StatusBarController.swift */; };
+		33E3C1C624CDCE76005B096B /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1C524CDCE76005B096B /* EventMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		337CD86824CDF78F005891E7 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Array.swift; path = HostButler/Array.swift; sourceTree = SOURCE_ROOT; };
+		337CD86B24CDFE89005891E7 /* PortsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortsListView.swift; sourceTree = "<group>"; };
+		33E37D9524CDD76C00698877 /* ObservablePorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservablePorts.swift; sourceTree = "<group>"; };
 		33E3C1A624CDC912005B096B /* HostButler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HostButler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E3C1A924CDC912005B096B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33E3C1AB24CDC912005B096B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,6 +33,9 @@
 		33E3C1B324CDC914005B096B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33E3C1B524CDC914005B096B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33E3C1B624CDC914005B096B /* HostButler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HostButler.entitlements; sourceTree = "<group>"; };
+		33E3C1C024CDCE18005B096B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		33E3C1C324CDCE5C005B096B /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		33E3C1C524CDCE76005B096B /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,12 +43,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E37D9424CDD6AE00698877 /* ShellOut in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		337CD86724CDF77E005891E7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				337CD86824CDF78F005891E7 /* Array.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		337CD86A24CDFE7A005891E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				337CD86B24CDFE89005891E7 /* PortsListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		33E3C19D24CDC912005B096B = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +85,9 @@
 		33E3C1A824CDC912005B096B /* HostButler */ = {
 			isa = PBXGroup;
 			children = (
+				337CD86A24CDFE7A005891E7 /* Views */,
+				337CD86724CDF77E005891E7 /* Extensions */,
+				33E3C1C224CDCE4E005B096B /* Helpers */,
 				33E3C1A924CDC912005B096B /* AppDelegate.swift */,
 				33E3C1AB24CDC912005B096B /* ContentView.swift */,
 				33E3C1AD24CDC914005B096B /* Assets.xcassets */,
@@ -62,6 +95,8 @@
 				33E3C1B524CDC914005B096B /* Info.plist */,
 				33E3C1B624CDC914005B096B /* HostButler.entitlements */,
 				33E3C1AF24CDC914005B096B /* Preview Content */,
+				33E3C1C024CDCE18005B096B /* MainViewController.swift */,
+				33E37D9524CDD76C00698877 /* ObservablePorts.swift */,
 			);
 			path = HostButler;
 			sourceTree = "<group>";
@@ -72,6 +107,15 @@
 				33E3C1B024CDC914005B096B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		33E3C1C224CDCE4E005B096B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				33E3C1C324CDCE5C005B096B /* StatusBarController.swift */,
+				33E3C1C524CDCE76005B096B /* EventMonitor.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,6 +134,9 @@
 			dependencies = (
 			);
 			name = HostButler;
+			packageProductDependencies = (
+				33E37D9324CDD6AE00698877 /* ShellOut */,
+			);
 			productName = HostButler;
 			productReference = 33E3C1A624CDC912005B096B /* HostButler.app */;
 			productType = "com.apple.product-type.application";
@@ -110,7 +157,7 @@
 				};
 			};
 			buildConfigurationList = 33E3C1A124CDC912005B096B /* Build configuration list for PBXProject "HostButler" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -118,6 +165,9 @@
 				Base,
 			);
 			mainGroup = 33E3C19D24CDC912005B096B;
+			packageReferences = (
+				33E37D9224CDD6AE00698877 /* XCRemoteSwiftPackageReference "ShellOut" */,
+			);
 			productRefGroup = 33E3C1A724CDC912005B096B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -145,8 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				337CD86C24CDFE89005891E7 /* PortsListView.swift in Sources */,
 				33E3C1AC24CDC912005B096B /* ContentView.swift in Sources */,
+				33E37D9624CDD76C00698877 /* ObservablePorts.swift in Sources */,
+				337CD86924CDF78F005891E7 /* Array.swift in Sources */,
 				33E3C1AA24CDC912005B096B /* AppDelegate.swift in Sources */,
+				33E3C1C624CDCE76005B096B /* EventMonitor.swift in Sources */,
+				33E3C1C424CDCE5C005B096B /* StatusBarController.swift in Sources */,
+				33E3C1C124CDCE18005B096B /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +352,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = albinekb.dev.HostButler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -319,6 +376,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = albinekb.dev.HostButler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -345,6 +403,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		33E37D9224CDD6AE00698877 /* XCRemoteSwiftPackageReference "ShellOut" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/ShellOut.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		33E37D9324CDD6AE00698877 /* ShellOut */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33E37D9224CDD6AE00698877 /* XCRemoteSwiftPackageReference "ShellOut" */;
+			productName = ShellOut;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 33E3C19E24CDC912005B096B /* Project object */;
 }
