@@ -25,14 +25,14 @@
 		337CD86B24CDFE89005891E7 /* PortsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortsListView.swift; sourceTree = "<group>"; };
 		337CD86E24CE274F005891E7 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		33E37D9524CDD76C00698877 /* ObservablePorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservablePorts.swift; sourceTree = "<group>"; };
-		33E3C1A624CDC912005B096B /* HostButler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HostButler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33E3C1A624CDC912005B096B /* PortButler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortButler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E3C1A924CDC912005B096B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33E3C1AB24CDC912005B096B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		33E3C1AD24CDC914005B096B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33E3C1B024CDC914005B096B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		33E3C1B324CDC914005B096B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33E3C1B524CDC914005B096B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33E3C1B624CDC914005B096B /* HostButler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HostButler.entitlements; sourceTree = "<group>"; };
+		33E3C1B624CDC914005B096B /* PortButler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PortButler.entitlements; sourceTree = "<group>"; };
 		33E3C1C024CDCE18005B096B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		33E3C1C324CDCE5C005B096B /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		33E3C1C524CDCE76005B096B /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		33E3C19D24CDC912005B096B = {
 			isa = PBXGroup;
 			children = (
-				33E3C1A824CDC912005B096B /* HostButler */,
+				33E3C1A824CDC912005B096B /* PortButler */,
 				33E3C1A724CDC912005B096B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,12 +77,12 @@
 		33E3C1A724CDC912005B096B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				33E3C1A624CDC912005B096B /* HostButler.app */,
+				33E3C1A624CDC912005B096B /* PortButler.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		33E3C1A824CDC912005B096B /* HostButler */ = {
+		33E3C1A824CDC912005B096B /* PortButler */ = {
 			isa = PBXGroup;
 			children = (
 				337CD86A24CDFE7A005891E7 /* Views */,
@@ -93,12 +93,12 @@
 				33E3C1AD24CDC914005B096B /* Assets.xcassets */,
 				33E3C1B224CDC914005B096B /* Main.storyboard */,
 				33E3C1B524CDC914005B096B /* Info.plist */,
-				33E3C1B624CDC914005B096B /* HostButler.entitlements */,
+				33E3C1B624CDC914005B096B /* PortButler.entitlements */,
 				33E3C1AF24CDC914005B096B /* Preview Content */,
 				33E3C1C024CDCE18005B096B /* MainViewController.swift */,
 				33E37D9524CDD76C00698877 /* ObservablePorts.swift */,
 			);
-			path = HostButler;
+			path = PortButler;
 			sourceTree = "<group>";
 		};
 		33E3C1AF24CDC914005B096B /* Preview Content */ = {
@@ -121,9 +121,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		33E3C1A524CDC912005B096B /* HostButler */ = {
+		33E3C1A524CDC912005B096B /* PortButler */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33E3C1B924CDC914005B096B /* Build configuration list for PBXNativeTarget "HostButler" */;
+			buildConfigurationList = 33E3C1B924CDC914005B096B /* Build configuration list for PBXNativeTarget "PortButler" */;
 			buildPhases = (
 				33E3C1A224CDC912005B096B /* Sources */,
 				33E3C1A324CDC912005B096B /* Frameworks */,
@@ -133,12 +133,12 @@
 			);
 			dependencies = (
 			);
-			name = HostButler;
+			name = PortButler;
 			packageProductDependencies = (
 				33E37D9324CDD6AE00698877 /* ShellOut */,
 			);
 			productName = HostButler;
-			productReference = 33E3C1A624CDC912005B096B /* HostButler.app */;
+			productReference = 33E3C1A624CDC912005B096B /* PortButler.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -156,7 +156,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 33E3C1A124CDC912005B096B /* Build configuration list for PBXProject "HostButler" */;
+			buildConfigurationList = 33E3C1A124CDC912005B096B /* Build configuration list for PBXProject "PortButler" */;
 			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -172,7 +172,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				33E3C1A524CDC912005B096B /* HostButler */,
+				33E3C1A524CDC912005B096B /* PortButler */,
 			);
 		};
 /* End PBXProject section */
@@ -337,20 +337,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HostButler/HostButler.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PortButler/PortButler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"HostButler/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PortButler/Preview Content\"";
 				DEVELOPMENT_TEAM = FQMAL85M89;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = HostButler/Info.plist;
+				INFOPLIST_FILE = PortButler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = albinekb.dev.HostButler;
+				PRODUCT_BUNDLE_IDENTIFIER = albinekb.dev.PortButler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 5.0;
@@ -361,20 +361,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HostButler/HostButler.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PortButler/PortButler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"HostButler/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PortButler/Preview Content\"";
 				DEVELOPMENT_TEAM = FQMAL85M89;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = HostButler/Info.plist;
+				INFOPLIST_FILE = PortButler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = albinekb.dev.HostButler;
+				PRODUCT_BUNDLE_IDENTIFIER = albinekb.dev.PortButler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 5.0;
@@ -384,7 +384,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		33E3C1A124CDC912005B096B /* Build configuration list for PBXProject "HostButler" */ = {
+		33E3C1A124CDC912005B096B /* Build configuration list for PBXProject "PortButler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33E3C1B724CDC914005B096B /* Debug */,
@@ -393,7 +393,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33E3C1B924CDC914005B096B /* Build configuration list for PBXNativeTarget "HostButler" */ = {
+		33E3C1B924CDC914005B096B /* Build configuration list for PBXNativeTarget "PortButler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33E3C1BA24CDC914005B096B /* Debug */,
