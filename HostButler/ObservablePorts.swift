@@ -10,8 +10,6 @@ import Foundation
 import SwiftUI
 import Combine
 import ShellOut
-//let output = try shellOut(to: "echo", arguments: ["Hello world"])
-//print(output) // Hello world
 
 public struct NetstatEntry {
     var proto: String
@@ -79,22 +77,5 @@ class ObservablePorts: ObservableObject {
             print(error.output) // Prints STDOUT
         }
 
-    }
-    
-    func start() {
-//        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-//            self.counter += 1
-//        }
-    }
-    
-    // 4.
-    func stop() {
-//        timer.invalidate()
-    }
-    
-    // 5.
-    func reset() {
-//        counter = 0
-//        timer.invalidate()
     }
 }

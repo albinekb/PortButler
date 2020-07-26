@@ -13,13 +13,6 @@ struct ContentView: View {
   
     var body: some View {
         VStack {
-//            HStack {
-//                Button(action: {
-//                    self.ports.scan()
-//                }) {
-//                    Text("scan")
-//                }
-//            }.padding(20)
             PortsListView(ports: self.ports.ports)
         }
             .frame(minWidth: 200, idealWidth: 320, maxWidth: 600, minHeight: 100, idealHeight: 200, maxHeight: 800, alignment: .center)
