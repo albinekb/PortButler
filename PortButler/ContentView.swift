@@ -9,16 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var ports = ObservablePorts()
+     @ObservedObject var ports = ObservablePorts()
   
     var body: some View {
         VStack {
             PortsListView(ports: self.ports.ports)
+            Spacer()
         }
-            .frame(minWidth: 200, idealWidth: 320, maxWidth: 600, minHeight: 100, idealHeight: 200, maxHeight: 800, alignment: .center)
-            .onAppear {
-                self.ports.scan()
-            }
+    
+        .frame(minWidth: 200, idealWidth: 320, maxWidth: 600, minHeight: 100, idealHeight: 200, maxHeight: 800, alignment: .top)
+    }
+    
+    public func scan () {
+        ports.scan()
     }
 }
 

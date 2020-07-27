@@ -44,6 +44,7 @@ class ObservablePorts: ObservableObject {
     
     
     func scan () {
+        print("Start: scan()")
         do {
             let output = try shellOut(to: "netstat", arguments: ["-Watnlv"])
             let lines: Array<String> = output.components(separatedBy: "\n")

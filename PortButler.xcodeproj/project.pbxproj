@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33324ABA24CEE52700F80719 /* NSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33324AB924CEE52700F80719 /* NSEvent.swift */; };
 		337CD86C24CDFE89005891E7 /* PortsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86B24CDFE89005891E7 /* PortsListView.swift */; };
 		337CD86F24CE274F005891E7 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86E24CE274F005891E7 /* Array.swift */; };
 		33E37D9424CDD6AE00698877 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 33E37D9324CDD6AE00698877 /* ShellOut */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33324AB924CEE52700F80719 /* NSEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEvent.swift; sourceTree = "<group>"; };
 		337CD86B24CDFE89005891E7 /* PortsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortsListView.swift; sourceTree = "<group>"; };
 		337CD86E24CE274F005891E7 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		33E37D9524CDD76C00698877 /* ObservablePorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservablePorts.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				337CD86E24CE274F005891E7 /* Array.swift */,
+				33324AB924CEE52700F80719 /* NSEvent.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				337CD86F24CE274F005891E7 /* Array.swift in Sources */,
+				33324ABA24CEE52700F80719 /* NSEvent.swift in Sources */,
 				337CD86C24CDFE89005891E7 /* PortsListView.swift in Sources */,
 				33E3C1AC24CDC912005B096B /* ContentView.swift in Sources */,
 				33E37D9624CDD76C00698877 /* ObservablePorts.swift in Sources */,
