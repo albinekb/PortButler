@@ -7,10 +7,27 @@
 //
 
 import Foundation
-
+import Combine
 
 
 import SwiftUI
+
+
+struct BrowserView: View {
+
+    private let browser = WebBrowserView()
+
+    var body: some View {
+        HStack {
+            browser
+                .onAppear() {
+                    self.browser
+                        .load(url: URL(string: "https://stackoverflow.com/tags")!)
+                }
+        }
+        .padding()
+    }
+}
 
 struct PortRowView: View {
     var port: Port
@@ -29,7 +46,9 @@ struct PortRowView: View {
                             Text(String(self.port.netstat?.pid ?? "")).font(.system(.caption, design: .monospaced))
                             Spacer()
                         }.frame(width: geometry.size.width / 4)
-                    HStack{Spacer()}.frame(width: geometry.size.width / 4)
+                    HStack{
+                        Spacer()
+                    }.frame(width: geometry.size.width / 4)
                     //HStack{Image(nsImage: NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName)).onTapGesture(perform: self.openUrl)}.frame(width: geometry.size.width / 4, height: 50)
                     //Button(action: self.openUrl){Text("Open"}
                     HStack{
@@ -65,9 +84,11 @@ struct PortsListView: View {
 
     
     var body: some View {
-        List(self.ports, id: \.self) { port in
-          PortRowView(port: port).frame(height: 40)
-        }.listStyle(SidebarListStyle())
+        Group{
+            List(self.ports, id: \.self) { port in
+              PortRowView(port: port).frame(height: 40)
+            }.listStyle(SidebarListStyle())
+        }
     }
 
 }
