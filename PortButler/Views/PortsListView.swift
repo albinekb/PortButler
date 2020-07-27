@@ -25,7 +25,10 @@ struct PortRowView: View {
                         Text(String(self.port.port)).font(.system(.caption, design: .monospaced))
                         Spacer()
                     }.frame(width: geometry.size.width / 4)
-                    HStack{Spacer()}.frame(width: geometry.size.width / 4)
+                        HStack{
+                            Text(String(self.port.netstat?.pid ?? "")).font(.system(.caption, design: .monospaced))
+                            Spacer()
+                        }.frame(width: geometry.size.width / 4)
                     HStack{Spacer()}.frame(width: geometry.size.width / 4)
                     //HStack{Image(nsImage: NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName)).onTapGesture(perform: self.openUrl)}.frame(width: geometry.size.width / 4, height: 50)
                     //Button(action: self.openUrl){Text("Open"}

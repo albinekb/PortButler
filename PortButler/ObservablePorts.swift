@@ -36,6 +36,19 @@ public struct Port: Hashable {
     }
 }
 
+func getFolderFromPid(pid: String) {
+    do {
+        let output = try shellOut(to: "lsof", arguments: ["-p 6501"])
+        let lines: Array<String> = output.components(separatedBy: "\n")
+       print(lines)
+    } catch {
+        let error = error as! ShellOutError
+        print(error.message) // Prints STDERR
+        print(error.output) // Prints STDOUT
+    }
+    
+}
+
 
 class ObservablePorts: ObservableObject {
     @Published var ports: Array<Port> = []
@@ -55,6 +68,9 @@ class ObservablePorts: ObservableObject {
                     return nil
                 }
                 
+                let pid = String(cols[8])
+                //getFolderFromPid(pid: pid)
+                
                 return NetstatEntry(
                     proto: String(cols[0]),
                     recvQ: String(cols[1]),
@@ -63,7 +79,7 @@ class ObservablePorts: ObservableObject {
                     state: String(cols[4]),
                     rhiwat: String(cols[5]),
                     shiwat: String(cols[6]),
-                    pid: String(cols[7]),
+                    pid: pid,
                     port: Int(String(port)) ?? 0
                 )
             }.filteredByType(NetstatEntry.self)
