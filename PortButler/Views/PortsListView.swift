@@ -66,11 +66,13 @@ struct PortRowView: View {
                                 NSCursor.pop()
                               }
                             })
+                            .onTapGesture(perform: self.openUrl)
                         
                     }.frame(width: geometry.size.width / 4)
                 }
             }
-        }.onTapGesture(perform: self.openUrl)
+        }
+        //.onTapGesture(perform: self.openUrl)
     }
     
     func openUrl() {
