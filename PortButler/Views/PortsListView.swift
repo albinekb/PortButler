@@ -14,12 +14,41 @@ import SwiftUI
 
 struct PortRowView: View {
     var port: Port
+    @State var isHovered: Bool = false
+
     
     var body: some View {
-        HStack(alignment: .center, spacing: 20) {
-            Text(String(self.port.port))
-            Button(action: self.openUrl){Text("Open")}
-        }.padding(20)
+        VStack{
+            GeometryReader { geometry in
+                HStack {
+                    HStack{
+                        Text(String(self.port.port)).font(.system(.caption, design: .monospaced))
+                        Spacer()
+                    }.frame(width: geometry.size.width / 4)
+                    HStack{Spacer()}.frame(width: geometry.size.width / 4)
+                    HStack{Spacer()}.frame(width: geometry.size.width / 4)
+                    //HStack{Image(nsImage: NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName)).onTapGesture(perform: self.openUrl)}.frame(width: geometry.size.width / 4, height: 50)
+                    //Button(action: self.openUrl){Text("Open"}
+                    HStack{
+                        Spacer()
+                        Button(action: self.openUrl){
+                            Image(nsImage: NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName)).opacity(0.5)
+                        }
+                            .toolTip("Open URL")
+                            .buttonStyle(PlainButtonStyle())
+                            .onHover(perform: { hovered in
+                              self.isHovered = hovered
+                              if hovered {
+                                NSCursor.pointingHand.push()
+                              } else {
+                                NSCursor.pop()
+                              }
+                            })
+                        
+                    }.frame(width: geometry.size.width / 4)
+                }
+            }
+        }.onTapGesture(perform: self.openUrl)
     }
     
     func openUrl() {
@@ -30,35 +59,12 @@ struct PortRowView: View {
 
 struct PortsListView: View {
     var ports: Array<Port>
+
     
     var body: some View {
-        VStack {
-            List(self.ports, id: \.self) { port in
-                HStack {
-                    PortRowView(port: port)
-                    Divider()
-                }
-                
-            }
-//            List(self.ports, id: \.self) { port in
-//                  PortRowView(port: port)
-//                    .padding(.horizontal, 4)
-//
-//                .listRowBackground(Color.red)
-//                .background(Color.green)
-//    //                .colorMultiply(Color.green)
-//
-//            }
-        }.frame(minWidth: 0,
-                maxWidth: .infinity,
-                minHeight: 0,
-                maxHeight: .infinity,
-                alignment: .topLeading
-        )
-  }
-  
-  func openLatestRelease() {
-    let url = URL(string: "https://github.com/daneden/zeitgeist/releases/latest")!
-    NSWorkspace.shared.open(url)
-  }
+        List(self.ports, id: \.self) { port in
+          PortRowView(port: port).frame(height: 40)
+        }.listStyle(SidebarListStyle())
+    }
+
 }
