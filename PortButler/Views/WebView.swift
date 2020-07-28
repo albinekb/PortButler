@@ -95,13 +95,14 @@ extension WebBrowserView: NSViewRepresentable {
 class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
     @Published var title: String = "Loading"
     @Published var isLoading: Bool = true
+    @Published var estimatedProgress: Double = 0
     private let webView = WKWebView(frame: .zero)
     
     public func load(url: URL){
         webView.navigationDelegate = self
         webView.load(URLRequest(url: url))
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
-     
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -109,6 +110,9 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
             if let title = webView.title {
                 self.title = title
             }
+        }
+        if keyPath == "estimatedProgress" {
+            self.estimatedProgress = webView.estimatedProgress
         }
     }
     public func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
@@ -125,33 +129,59 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
     }
 }
 
+struct ProgressIndicator: NSViewRepresentable {
+    
+    typealias TheNSView = NSProgressIndicator
+    var configuration = { (view: TheNSView) in }
+    
+    func makeNSView(context: NSViewRepresentableContext<ProgressIndicator>) -> NSProgressIndicator {
+        TheNSView()
+    }
+    
+    func updateNSView(_ nsView: NSProgressIndicator, context: NSViewRepresentableContext<ProgressIndicator>) {
+        configuration(nsView)
+    }
+}
+
 struct BrowserTitleView: View {
     var port: Int
-    @ObservedObject var webView = ObservableWebView()
+    @ObservedObject private var webView = ObservableWebView()
     var body: some View {
         AnyView(
-            Text(self.webView.title)
+            VStack{
+                if self.webView.isLoading  {
+                    ProgressIndicator{
+                        $0.style = .spinning
+                        $0.sizeToFit()
+                        $0.usesThreadedAnimation = true
+                        $0.startAnimation(nil)
+                        $0.controlSize = .small
+                    }
+                } else {
+                    Text(self.webView.title)
+                }
+            }
         ).onAppear{
             self.webView.load(url: URL(string: "http://localhost:" + String(self.port))!)
         }
     }
 }
 
-struct BrowserView: View {
-    private let browser = WebBrowserView()
-    var port: Int
-
-    var body: some View {
-        HStack {
-            browser
-                .onAppear() {
-                    self.browser
-                        .load(url: URL(string: "http://localhost:" + String(self.port))!)
-            }.frame(width:0,height: 0)
-
-
-        }
-        .padding()
-    }
-}
+//struct BrowserView: View {
+//    private let browser = WebBrowserView()
+//    var port: Int
+//
+//    var body: some View {
+//        HStack {
+//            browser
+//                .onAppear() {
+//                    self.browser
+//                        .load(url: URL(string: "http://localhost:" + String(self.port))!)
+//            }.frame(width:0,height: 0)
+//
+//
+//        }
+//        .padding()
+//    }
+//}
 #endif
