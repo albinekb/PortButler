@@ -23,6 +23,8 @@
 		33E3C1C124CDCE18005B096B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1C024CDCE18005B096B /* MainViewController.swift */; };
 		33E3C1C424CDCE5C005B096B /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1C324CDCE5C005B096B /* StatusBarController.swift */; };
 		33E3C1C624CDCE76005B096B /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1C524CDCE76005B096B /* EventMonitor.swift */; };
+		33F997A024D02DAB008D314B /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 33F9979F24D02DAB008D314B /* Introspect */; };
+		33F997A224D02F4D008D314B /* DisabledScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F997A124D02F4D008D314B /* DisabledScroll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,7 @@
 		33E3C1C024CDCE18005B096B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		33E3C1C324CDCE5C005B096B /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		33E3C1C524CDCE76005B096B /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		33F997A124D02F4D008D314B /* DisabledScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledScroll.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33E37D9424CDD6AE00698877 /* ShellOut in Frameworks */,
+				33F997A024D02DAB008D314B /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +78,7 @@
 				33324AB924CEE52700F80719 /* NSEvent.swift */,
 				33324AC224CF151600F80719 /* Tooltip.swift */,
 				33324AC424CF155000F80719 /* BlurView.swift */,
+				33F997A124D02F4D008D314B /* DisabledScroll.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			name = PortButler;
 			packageProductDependencies = (
 				33E37D9324CDD6AE00698877 /* ShellOut */,
+				33F9979F24D02DAB008D314B /* Introspect */,
 			);
 			productName = HostButler;
 			productReference = 33E3C1A624CDC912005B096B /* PortButler.app */;
@@ -179,6 +185,7 @@
 			mainGroup = 33E3C19D24CDC912005B096B;
 			packageReferences = (
 				33E37D9224CDD6AE00698877 /* XCRemoteSwiftPackageReference "ShellOut" */,
+				33F9979E24D02DAB008D314B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 33E3C1A724CDC912005B096B /* Products */;
 			projectDirPath = "";
@@ -215,6 +222,7 @@
 				33E3C1AC24CDC912005B096B /* ContentView.swift in Sources */,
 				33E37D9624CDD76C00698877 /* ObservablePorts.swift in Sources */,
 				33E3C1AA24CDC912005B096B /* AppDelegate.swift in Sources */,
+				33F997A224D02F4D008D314B /* DisabledScroll.swift in Sources */,
 				33E3C1C624CDCE76005B096B /* EventMonitor.swift in Sources */,
 				33324AC724CF219C00F80719 /* WebView.swift in Sources */,
 				33E3C1C424CDCE5C005B096B /* StatusBarController.swift in Sources */,
@@ -429,6 +437,14 @@
 				minimumVersion = 2.3.0;
 			};
 		};
+		33F9979E24D02DAB008D314B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -436,6 +452,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33E37D9224CDD6AE00698877 /* XCRemoteSwiftPackageReference "ShellOut" */;
 			productName = ShellOut;
+		};
+		33F9979F24D02DAB008D314B /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33F9979E24D02DAB008D314B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

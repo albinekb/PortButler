@@ -11,6 +11,7 @@ import Combine
 
 
 import SwiftUI
+import Introspect
 
 
 struct BrowserView: View {
@@ -98,12 +99,16 @@ struct PortsListView: View {
     
     var body: some View {
         Group{
-            List([0], id: \.self) { i in
+            List{
                 RowView(port: {Text("Port")}, pid: {Text("Pid")}, title: {Text("Title")}, action: AnyView(Text("Action"))).frame(height: 40)
-                }.listStyle(SidebarListStyle()).frame(maxHeight: 30)
+                .introspectScrollView { (scroll: NSScrollView) in scroll.hasVerticalScroller = false }
+            }
+            .listStyle(SidebarListStyle()).frame(maxHeight: 30)
+            
             List(self.ports, id: \.self) { port in
               PortRowView(port: port).frame(height: 40)
-            }.listStyle(SidebarListStyle())
+            }
+            .listStyle(SidebarListStyle())
         }
     }
 
