@@ -13,6 +13,7 @@
 		33324AC724CF219C00F80719 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33324AC624CF219C00F80719 /* WebView.swift */; };
 		337CD86C24CDFE89005891E7 /* PortsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86B24CDFE89005891E7 /* PortsListView.swift */; };
 		337CD86F24CE274F005891E7 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86E24CE274F005891E7 /* Array.swift */; };
+		338D5A6B24D03EB0008EF9DD /* StatusItemContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */; };
 		33E37D9424CDD6AE00698877 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 33E37D9324CDD6AE00698877 /* ShellOut */; };
 		33E37D9624CDD76C00698877 /* ObservablePorts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E37D9524CDD76C00698877 /* ObservablePorts.swift */; };
 		33E3C1AA24CDC912005B096B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1A924CDC912005B096B /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 		33324AC624CF219C00F80719 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		337CD86B24CDFE89005891E7 /* PortsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortsListView.swift; sourceTree = "<group>"; };
 		337CD86E24CE274F005891E7 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemContainerView.swift; sourceTree = "<group>"; };
 		33E37D9524CDD76C00698877 /* ObservablePorts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservablePorts.swift; sourceTree = "<group>"; };
 		33E3C1A624CDC912005B096B /* PortButler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortButler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E3C1A924CDC912005B096B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				337CD86B24CDFE89005891E7 /* PortsListView.swift */,
 				33324AC624CF219C00F80719 /* WebView.swift */,
+				338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				33E37D9624CDD76C00698877 /* ObservablePorts.swift in Sources */,
 				33E3C1AA24CDC912005B096B /* AppDelegate.swift in Sources */,
 				33F997A224D02F4D008D314B /* DisabledScroll.swift in Sources */,
+				338D5A6B24D03EB0008EF9DD /* StatusItemContainerView.swift in Sources */,
 				33E3C1C624CDCE76005B096B /* EventMonitor.swift in Sources */,
 				33324AC724CF219C00F80719 /* WebView.swift in Sources */,
 				33E3C1C424CDCE5C005B096B /* StatusBarController.swift in Sources */,

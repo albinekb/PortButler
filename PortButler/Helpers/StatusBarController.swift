@@ -48,6 +48,7 @@ class StatusBarController {
 //            //statusBarButton.image = #imageLiteral(resourceName: "StatusBarIcon")
 //
             itemImage.size = NSSize(width: 20.0, height: 20.0)
+            
             itemImage.isTemplate = true
 
             statusBarButton.image = itemImage
@@ -75,7 +76,15 @@ class StatusBarController {
             //statusBarButton.state = .off
             
             statusBarButton.target = self
+            
         }
+//        
+//           let f: NSRect = NSMakeRect(32, 32, 200, 200)
+//         let v: NSView = NSView(frame: f)
+//
+//        v.wantsLayer = true
+//        v.layer?.backgroundColor = NSColor.green.cgColor
+//        configureStatusBarButton(with: v)
         
         
         
@@ -84,6 +93,20 @@ class StatusBarController {
         
         
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler)
+    }
+    
+    private func configureStatusBarButton(with view: NSView) {
+//        item = NSStatusBar.system.statusItem(withLength: NSWidth(view.bounds))
+        
+        // 1
+        guard let button = self.statusItem.button else { return }
+        button.target = self
+        button.action = #selector(handleButton(sender:))
+
+        // 2
+        let statusItemContainer = StatusItemContainerView()
+        statusItemContainer.embed(view)
+        button.addSubview(statusItemContainer)
     }
     
     @objc func handleButton(sender: NSStatusItem?) {
