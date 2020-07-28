@@ -29,8 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentViewController = MainViewController()
         popover.contentSize = NSSize(width: 360, height: 360)
         popover.contentViewController?.view = NSHostingView(rootView: contentView)
-        popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
-        popover.animates = true
+        //popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
+        popover.animates = false
         //popover.behavior = .transient
         
 

@@ -8,20 +8,22 @@
 
 import AppKit
 
-extension NSStatusBarButton {
+//extension NSStatusBarButton {
+//
+//   public override func mouseDown(with: NSEvent) {
+//
+//    if (with.modifierFlags.contains(.control)) {
+//            self.rightMouseDown(with: with)
+//            return
+//        }
+//
+//        self.highlight(true)
+//
+//    (self.target)?.togglePopover(sender:nil)
+//    }
+//}
 
-   public override func mouseDown(with: NSEvent) {
 
-    if (with.modifierFlags.contains(.control)) {
-            self.rightMouseDown(with: with)
-            return
-        }
-
-        self.highlight(true)
-
-    (self.target)?.togglePopover(sender:nil)
-    }
-}
 
 class StatusBarController {
     private var statusBar: NSStatusBar
@@ -35,75 +37,69 @@ class StatusBarController {
         
 
         statusBar = NSStatusBar.init()
-        statusItem = statusBar.statusItem(withLength: 28.0)
-
+        statusItem = statusBar.statusItem(withLength: 32)
+        
+        
 
         //statusItem = statusBar.statusItem(withLength: NSStatusItem.squareLength)
         
         if let statusBarButton = statusItem.button {
             
-            statusBarButton.title = "🔗"
+            //statusBarButton.title = "🔗"
             let itemImage =  #imageLiteral(resourceName: "StatusIcon")
 //            let itemImage = NSImage(named: "StatusBarIcon")
 //            //statusBarButton.image = #imageLiteral(resourceName: "StatusBarIcon")
 //
-            itemImage.size = NSSize(width: 20.0, height: 20.0)
+            itemImage.size = NSSize(width: 32, height: 22)
             
             itemImage.isTemplate = true
 
             statusBarButton.image = itemImage
-//            statusBarButton.image?.isTemplate = true
+            statusBarButton.image?.isTemplate = false
             statusBarButton.action = #selector(handleButton(sender:))
             statusBarButton.sendAction(on: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown])
-
+            ///statusBarButton.isHighlighted = true
+            //statusBarButton.isBordered = true
             
             //(statusBarButton.cell as? NSButtonCell)?.highlightsBy = .changeBackgroundCellMask
-            statusBarButton.highlight(false)
+            //statusBarButton.highlight(false)
 //            print(statusBarButton.type)
             statusBarButton.setButtonType(NSButton.ButtonType.onOff)
-            //statusBarButton.appearance = NSAppearance(named: NSAppearance.Name.aqua)
+            statusBarButton.appearance = NSAppearance(named: NSAppearance.Name.aqua)
             
 
-            statusBarButton.cell?.showsFirstResponder = false
+            //statusBarButton.cell?.showsFirstResponder = false
 
-            let bColor = NSColor(red: 230.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, alpha: 0)
-            (statusBarButton.cell as! NSButtonCell).backgroundColor = bColor
-            statusBarButton.layer?.backgroundColor = bColor.cgColor
+//            let bColor = NSColor(red: 230.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, alpha: 1)
+//            (statusBarButton.cell as! NSButtonCell).backgroundColor = bColor
+//            statusBarButton.layer?.backgroundColor = bColor.cgColor
+//
+//            (statusBarButton.cell as! NSButtonCell).showsStateBy = .contentsCellMask
+//            (statusBarButton.cell as! NSButtonCell).highlightsBy = .changeBackgroundCellMask
 
-            (statusBarButton.cell as! NSButtonCell).showsStateBy = .changeBackgroundCellMask
-            (statusBarButton.cell as! NSButtonCell).highlightsBy = .contentsCellMask
-
-            //statusBarButton.state = .off
             
             statusBarButton.target = self
             
         }
-//        
-//           let f: NSRect = NSMakeRect(32, 32, 200, 200)
-//         let v: NSView = NSView(frame: f)
-//
-//        v.wantsLayer = true
-//        v.layer?.backgroundColor = NSColor.green.cgColor
-//        configureStatusBarButton(with: v)
-        
-        
-        
-        
+        NSEvent.addLocalMonitorForEvents(matching: .leftMouseDown) { [weak self] event in
+            if event.window == self?.statusItem.button?.window {
+                // Your action:
+                self?.togglePopover(sender: self?.statusItem.button)
+                return nil
+            }
 
-        
+            return event
+        }
+
         
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler)
     }
     
     private func configureStatusBarButton(with view: NSView) {
-//        item = NSStatusBar.system.statusItem(withLength: NSWidth(view.bounds))
-        
-        // 1
         guard let button = self.statusItem.button else { return }
         button.target = self
         button.action = #selector(handleButton(sender:))
 
-        // 2
         let statusItemContainer = StatusItemContainerView()
         statusItemContainer.embed(view)
         button.addSubview(statusItemContainer)
@@ -117,7 +113,6 @@ class StatusBarController {
         } else if event.type == NSEvent.EventType.leftMouseDown {
             self.togglePopover(sender: sender)
         }
-
     }
     
     @objc func rightMouseDown (sender: AnyObject?) {
@@ -140,20 +135,22 @@ class StatusBarController {
         
         
 
-        DispatchQueue.main.async(execute: {
-            statusBarButton.highlight(true)
-        })
+    
         popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
         eventMonitor?.start()
+        DispatchQueue.main.async {
+            statusBarButton.highlight(true)
+        }
     }
     
     func hidePopover(_ sender: AnyObject?) {
         guard let statusBarButton = statusItem.button else { return }
+       
+        popover.performClose(sender)
+        eventMonitor?.stop()
         DispatchQueue.main.async(execute: {
             statusBarButton.highlight(false)
         })
-        popover.performClose(sender)
-        eventMonitor?.stop()
     }
     
     func mouseEventHandler(_ event: NSEvent?) {
