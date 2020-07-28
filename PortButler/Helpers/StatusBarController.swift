@@ -42,26 +42,41 @@ class StatusBarController {
         
         if let statusBarButton = statusItem.button {
             
-            statusBarButton.title = "😎"
-            let itemImage = NSImage(named: "StatusBarIcon")
-            //statusBarButton.image = #imageLiteral(resourceName: "StatusBarIcon")
-            
-            itemImage?.size = NSSize(width: 20.0, height: 20.0)
-            itemImage?.isTemplate = true
-            
+            statusBarButton.title = "🔗"
+            let itemImage =  #imageLiteral(resourceName: "StatusIcon")
+//            let itemImage = NSImage(named: "StatusBarIcon")
+//            //statusBarButton.image = #imageLiteral(resourceName: "StatusBarIcon")
+//
+            itemImage.size = NSSize(width: 20.0, height: 20.0)
+            itemImage.isTemplate = true
+
             statusBarButton.image = itemImage
-            statusBarButton.image?.isTemplate = true
+//            statusBarButton.image?.isTemplate = true
             statusBarButton.action = #selector(handleButton(sender:))
             statusBarButton.sendAction(on: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown])
 
             
             //(statusBarButton.cell as? NSButtonCell)?.highlightsBy = .changeBackgroundCellMask
-            //statusBarButton.highlight(true)
-            //statusBarButton.setButtonType(NSButton.ButtonType.pushOnPushOff)
+            statusBarButton.highlight(false)
+//            print(statusBarButton.type)
+            statusBarButton.setButtonType(NSButton.ButtonType.onOff)
+            //statusBarButton.appearance = NSAppearance(named: NSAppearance.Name.aqua)
+            
+
+            statusBarButton.cell?.showsFirstResponder = false
+
+            let bColor = NSColor(red: 230.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, alpha: 0)
+            (statusBarButton.cell as! NSButtonCell).backgroundColor = bColor
+            statusBarButton.layer?.backgroundColor = bColor.cgColor
+
+            (statusBarButton.cell as! NSButtonCell).showsStateBy = .changeBackgroundCellMask
+            (statusBarButton.cell as! NSButtonCell).highlightsBy = .contentsCellMask
+
             //statusBarButton.state = .off
             
             statusBarButton.target = self
         }
+        
         
         
         
