@@ -21,6 +21,7 @@ public struct WebBrowserView {
     // ...
 
     public func load(url: URL) {
+        print(url)
         webView.load(URLRequest(url: url))
     }
     
@@ -38,14 +39,15 @@ public struct WebBrowserView {
 
         public func webView(_: WKWebView, didFail: WKNavigation!, withError: Error) {
             // ...
+            print("webview error")
         }
 
         public func webView(_: WKWebView, didFailProvisionalNavigation: WKNavigation!, withError: Error) {
             // ...
         }
 
-        public func webView(_: WKWebView, didFinish: WKNavigation!) {
-            // ...
+        public func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
+            parent.didFinish(title: webView.title!)
         }
 
         public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -84,6 +86,72 @@ extension WebBrowserView: NSViewRepresentable {
 
     public func updateNSView(_ nsView: WKWebView, context: NSViewRepresentableContext<WebBrowserView>) {
 
+    }
+    public func didFinish(title: String) {
+        print(title)
+    }
+}
+
+class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
+    @Published var title: String = "Loading"
+    @Published var isLoading: Bool = true
+    private let webView = WKWebView(frame: .zero)
+    
+    public func load(url: URL){
+        webView.navigationDelegate = self
+        webView.load(URLRequest(url: url))
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
+     
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "title" {
+            if let title = webView.title {
+                self.title = title
+            }
+        }
+    }
+    public func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
+        self.isLoading = false
+        guard let title = webView.title else {
+            self.title = "Error"
+            return
+        }
+        if title.count > 2 {
+            self.title = title
+        } else {
+            self.title = "-"
+        }
+    }
+}
+
+struct BrowserTitleView: View {
+    var port: Int
+    @ObservedObject var webView = ObservableWebView()
+    var body: some View {
+        AnyView(
+            Text(self.webView.title)
+        ).onAppear{
+            self.webView.load(url: URL(string: "http://localhost:" + String(self.port))!)
+        }
+    }
+}
+
+struct BrowserView: View {
+    private let browser = WebBrowserView()
+    var port: Int
+
+    var body: some View {
+        HStack {
+            browser
+                .onAppear() {
+                    self.browser
+                        .load(url: URL(string: "http://localhost:" + String(self.port))!)
+            }.frame(width:0,height: 0)
+
+
+        }
+        .padding()
     }
 }
 #endif

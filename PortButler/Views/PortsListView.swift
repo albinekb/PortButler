@@ -14,25 +14,11 @@ import SwiftUI
 import Introspect
 
 
-struct BrowserView: View {
-    private let browser = WebBrowserView()
-
-    var body: some View {
-        HStack {
-            browser
-                .onAppear() {
-                    self.browser
-                        .load(url: URL(string: "https://stackoverflow.com/tags")!)
-                }
-        }
-        .padding()
-    }
-}
 
 struct RowView<Child>: View where Child: View {
     var port: () -> Child
     var pid: () -> Child
-    var title: () -> Child
+    var title: AnyView
     var action: AnyView
 
     var body: some View {
@@ -41,7 +27,7 @@ struct RowView<Child>: View where Child: View {
                 HStack {
                     HStack{Group(content: self.port);Spacer()}.frame(width: geometry.size.width / 4)
                     HStack{Group(content: self.pid);Spacer()}.frame(width: geometry.size.width / 4)
-                    HStack{Group(content: self.title);Spacer()}.frame(width: geometry.size.width / 4)
+                    HStack{AnyView(self.title);Spacer()}.frame(width: geometry.size.width / 4)
                     HStack{Spacer();AnyView(self.action);}.frame(width: geometry.size.width / 4)
                 }
             }
@@ -81,7 +67,7 @@ struct PortRowView: View {
         RowView(
             port: {Text(String(self.port.port)).font(.system(.caption, design: .monospaced))},
             pid: {Text(String(self.port.netstat?.pid ?? "")).font(.system(.caption, design: .monospaced))},
-            title: {Text("N/a")},
+            title: AnyView(BrowserTitleView(port: self.port.port)),
             action: AnyView(OpenPageButton(title: "Open URL", action: self.openUrl))
         )
     }
@@ -100,7 +86,7 @@ struct PortsListView: View {
     var body: some View {
         Group{
             List{
-                RowView(port: {Text("Port")}, pid: {Text("Pid")}, title: {Text("Title")}, action: AnyView(Text("Action"))).frame(height: 40)
+                RowView(port: {Text("Port")}, pid: {Text("Pid")}, title: AnyView(Text("Title")), action: AnyView(Text("Open"))).frame(height: 40)
                 .introspectScrollView { (scroll: NSScrollView) in scroll.hasVerticalScroller = false }
             }
             .listStyle(SidebarListStyle()).frame(maxHeight: 30)
