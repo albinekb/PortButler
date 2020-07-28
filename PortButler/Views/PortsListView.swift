@@ -20,15 +20,16 @@ struct RowView<Child>: View where Child: View {
     var pid: () -> Child
     var title: AnyView
     var action: AnyView
+    private let columns: CGFloat = 3
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             GeometryReader { geometry in
-                HStack {
-                    HStack{Group(content: self.port);Spacer()}.frame(width: geometry.size.width / 4)
-                    HStack{Group(content: self.pid);Spacer()}.frame(width: geometry.size.width / 4)
-                    HStack{AnyView(self.title);Spacer()}.frame(width: geometry.size.width / 4)
-                    HStack{Spacer();AnyView(self.action);}.frame(width: geometry.size.width / 4)
+                HStack(alignment: .top) {
+                    HStack{Group(content: self.port);Spacer()}.frame(width: ((geometry.size.width / 12) * 2))
+                    //HStack{Group(content: self.pid);Spacer()}.frame(width: geometry.size.width / 4)
+                    HStack{AnyView(self.title);Spacer()}.frame(minWidth: ((geometry.size.width / 12) * 8), maxWidth: .infinity)
+                    HStack{Spacer();AnyView(self.action);}.frame(width: ((geometry.size.width / 12) * 2))
                 }
             }
         }
@@ -65,7 +66,7 @@ struct PortRowView: View {
     
     var body: some View {
         RowView(
-            port: {Text(String(self.port.port)).font(.system(.caption, design: .monospaced))},
+            port: {Text(String(self.port.port)).font(.system(.caption, design: .monospaced)).bold()},
             pid: {Text(String(self.port.netstat?.pid ?? "")).font(.system(.caption, design: .monospaced))},
             title: AnyView(BrowserTitleView(port: self.port.port)),
             action: AnyView(OpenPageButton(title: "Open URL", action: self.openUrl))
