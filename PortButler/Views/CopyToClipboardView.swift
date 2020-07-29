@@ -78,12 +78,12 @@ struct CopyToClipboard<Child>: View where Child: View {
                     if self.isCopied {
                         if self.isHovered {
                             self.isHovered = false
-                            NSCursor.pop()
+//                            NSCursor.pop()
                         }
                         return
                     }
                     self.isHovered = hovered
-                    if hovered { NSCursor.pointingHand.push() } else { NSCursor.pop() }
+//                    if hovered { NSCursor.pointingHand.push() } else { NSCursor.pop() }
                 })
                 .opacity(self.isHovered ? 0.7 : 1)
         }
