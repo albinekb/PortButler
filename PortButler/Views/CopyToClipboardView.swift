@@ -53,7 +53,7 @@ struct CopyToClipboard<Child>: View where Child: View {
                 self.copyString()
             }
             Button(action: self.copyString) {
-                Image(nsImage: NSImage(named: NSImage.shareTemplateName)!.image(withTintColor: NSColor.systemBlue)).opacity(self.isHovered ? 1 : 0.8)
+                Image(nsImage: NSImage(named: NSImage.shareTemplateName)!.image(withTintColor: NSColor.systemBlue)).opacity(self.isHovered ? 0.7 : 1)
             }
                 .toolTip("Copy port to clipboard")
                 .buttonStyle(PlainButtonStyle())
