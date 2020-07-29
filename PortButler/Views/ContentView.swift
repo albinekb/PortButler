@@ -19,7 +19,7 @@ struct ContentView: View {
             } else {
                 HStack(alignment: .center){Text("No ports open")}.frame(maxHeight: .infinity)
             }
-        }.frame(minWidth: 200, idealWidth: 320, maxWidth: 600, minHeight: 50, idealHeight: 50, maxHeight: 800, alignment: .top)
+        }
     }
     
     public func scan () {

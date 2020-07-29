@@ -26,10 +26,10 @@ struct RowView<Child>: View where Child: View {
         VStack(alignment: .leading) {
             GeometryReader { geometry in
                 HStack(alignment: .top) {
-                    HStack{AnyView(self.port);Spacer()}.frame(width: ((geometry.size.width / 12) * 3))
-                    //HStack{Group(content: self.pid);Spacer()}.frame(width: geometry.size.width / 4)
-                    HStack{AnyView(self.title);Spacer()}.frame(minWidth: ((geometry.size.width / 12) * 7), maxWidth: .infinity)
-                    HStack{Spacer();AnyView(self.action);}.frame(width: ((geometry.size.width / 12) * 2))
+                    HStack{AnyView(self.port);Spacer(minLength: 0)}.frame(width: ((geometry.size.width / 12) * 3))
+                    //HStack{Group(content: self.pid);Spacer(minLength: 0)}.frame(width: geometry.size.width / 4)
+                    HStack{AnyView(self.title);Spacer(minLength: 0)}.frame(minWidth: ((geometry.size.width / 12) * 7), maxWidth: .infinity)
+                    HStack{Spacer(minLength: 0);AnyView(self.action);}.frame(width: ((geometry.size.width / 12) * 1.5))
                 }
             }
         }
@@ -86,21 +86,25 @@ struct PortRowView: View {
 
 struct PortsListView: View {
     var ports: Array<Port>
-    private let insets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+    private let headerInsets = EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
+    private let listInsets = EdgeInsets(top: 0, leading: -5, bottom: 0, trailing: 0)
 
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
-            RowView(port: AnyView(Text("Port")), pid: {Text("Pid")}, title: AnyView(Text("Title")), action: AnyView(Text("Open")))
-                .padding(self.insets)
+            RowView(
+                port: AnyView(Text("Port").font(.system(.caption))),
+                pid: {Text("Pid").font(.system(.caption))},
+                title: AnyView(Text("Title").font(.system(.caption))),
+                action: AnyView(Text("URL").font(.system(.caption))))
+                .padding(self.headerInsets)
                 .frame(maxHeight: 24)
             
             List(self.ports, id: \.self){ port in PortRowView(port: port) }
                 .listStyle(SidebarListStyle())
-                .listRowInsets(self.insets)
-                .padding(0)
-                .frame(maxHeight: .infinity)
-        }
+                .padding(self.listInsets)
+               
+        }.frame(minWidth: 300, idealWidth: 320, maxWidth: 600, minHeight: 50, idealHeight: 50, maxHeight: 320, alignment: .top)
     }
 
 }

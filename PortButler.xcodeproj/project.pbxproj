@@ -73,6 +73,7 @@
 		337CD86A24CDFE7A005891E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				33E3C1AB24CDC912005B096B /* ContentView.swift */,
 				337CD86B24CDFE89005891E7 /* PortsListView.swift */,
 				33324AC624CF219C00F80719 /* WebView.swift */,
 				338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */,
@@ -118,7 +119,6 @@
 				33E3C1C224CDCE4E005B096B /* Helpers */,
 				33E3C1A924CDC912005B096B /* AppDelegate.swift */,
 				337CD86D24CE269C005891E7 /* Extensions */,
-				33E3C1AB24CDC912005B096B /* ContentView.swift */,
 				33E3C1AD24CDC914005B096B /* Assets.xcassets */,
 				33E3C1B224CDC914005B096B /* Main.storyboard */,
 				33E3C1B524CDC914005B096B /* Info.plist */,
