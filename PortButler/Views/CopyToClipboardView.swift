@@ -69,5 +69,6 @@ struct CopyToClipboard<Child>: View where Child: View {
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
         pasteboard.setString(self.text, forType: NSPasteboard.PasteboardType.string)
+        NotificationCenter.default.post(name: NSNotification.PopoverRequestClose, object: nil)
     }
 }

@@ -24,18 +24,27 @@ import AppKit
 //}
 
 
+extension NSNotification {
+    static let PopoverRequestClose = NSNotification.Name.init("PopoverRequestClose")
+}
+
 
 class StatusBarController {
     private var statusBar: NSStatusBar
     private var statusItem: NSStatusItem
     private var popover: NSPopover
     private var eventMonitor: EventMonitor?
+    let NC = NotificationCenter.default
+
+
+
+   
     
     init(_ popover: NSPopover)
     {
         self.popover = popover
         
-
+        
         statusBar = NSStatusBar.init()
         statusItem = statusBar.statusItem(withLength: 32)
         
@@ -93,6 +102,9 @@ class StatusBarController {
 
         
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler)
+        
+        self.NC.addObserver(forName: NSNotification.PopoverRequestClose, object: nil, queue: nil,
+                               using: self.handlePopoverRequestClose)
     }
     
     private func configureStatusBarButton(with view: NSView) {
@@ -151,6 +163,10 @@ class StatusBarController {
         DispatchQueue.main.async(execute: {
             statusBarButton.highlight(false)
         })
+    }
+    
+    func handlePopoverRequestClose(_ notification: Notification) {
+        self.hidePopover(nil)
     }
     
     func mouseEventHandler(_ event: NSEvent?) {
