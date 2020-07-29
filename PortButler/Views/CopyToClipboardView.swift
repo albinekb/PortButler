@@ -38,9 +38,15 @@ struct ClipboardIcon: View {
     var body: some View {
         HStack{
             if !isCopied {
-                Image(nsImage: NSImage(named: "paperclipCircle")!.image(withTintColor: NSColor.systemBlue))
+                Image(nsImage: NSImage(named: "paperclipCircle")!
+                    .image(withTintColor: NSColor.systemBlue))
+                    .resizable()
+                    .frame(width: 16, height: 16)
             } else {
-                Image(nsImage: NSImage(named: "checkmarkCircle")!.image(withTintColor: NSColor.systemGray))
+                Image(nsImage: NSImage(named: "checkmarkCircle")!
+                    .image(withTintColor: NSColor.systemGray))
+                    .resizable()
+                    .frame(width: 16, height: 16)
             }
         }
     }
