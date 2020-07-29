@@ -93,7 +93,7 @@ extension WebBrowserView: NSViewRepresentable {
 }
 
 class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
-    @Published var title: String = "Loading"
+    @Published var title: String = ""
     @Published var isLoading: Bool = true
     @Published var estimatedProgress: Double = 0
     private let webView = WKWebView(frame: .zero)
@@ -101,15 +101,17 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
     public func load(url: URL){
         webView.navigationDelegate = self
         webView.load(URLRequest(url: url))
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
+        //webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "title" {
-            if let title = webView.title {
-                self.title = title
+            guard let title = webView.title else {
+                self.title = "Error"
+                return
             }
+            self.maybeUpdateTitle(title)
         }
         if keyPath == "estimatedProgress" {
             self.estimatedProgress = webView.estimatedProgress
@@ -121,11 +123,15 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
             self.title = "Error"
             return
         }
+        self.maybeUpdateTitle(title)
+    }
+    
+    func maybeUpdateTitle (_ title: String) {
         if title.count > 2 {
-            self.title = title
-        } else {
-            self.title = "-"
-        }
+             self.title = title
+         } else if self.title.count == 0 {
+             self.title = "-"
+         }
     }
 }
 
