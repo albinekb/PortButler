@@ -46,7 +46,7 @@ struct OpenPageButton: View {
     var body: some View {
         Button(action: self.action) {
             Image(nsImage:
-                NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName).image(withTintColor: NSColor.systemGray)
+                NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName).image(withTintColor: NSColor.systemTeal)
             ).opacity(self.isHovered ? 0.7 : 1)
         }
             .toolTip(self.title)
@@ -90,16 +90,16 @@ struct PortsListView: View {
 
     
     var body: some View {
-        Group{
+        VStack(alignment: .leading, spacing: 0){
             RowView(port: AnyView(Text("Port")), pid: {Text("Pid")}, title: AnyView(Text("Title")), action: AnyView(Text("Open")))
                 .padding(self.insets)
-                .frame(height: 30)
+                .frame(maxHeight: 24)
             
-            List(self.ports, id: \.self) { port in
-              PortRowView(port: port).frame(height: 40)
-            }
-            .listStyle(SidebarListStyle())
-            .listRowInsets(self.insets)
+            List(self.ports, id: \.self){ port in PortRowView(port: port) }
+                .listStyle(SidebarListStyle())
+                .listRowInsets(self.insets)
+                .padding(0)
+                .frame(maxHeight: .infinity)
         }
     }
 
