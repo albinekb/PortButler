@@ -46,7 +46,7 @@ struct OpenPageButton: View {
     var body: some View {
         Button(action: self.action) {
             Image(nsImage:
-                NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName).image(withTintColor: NSColor.systemTeal)
+                NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName).image(withTintColor: NSColor.controlAccentColor)
             ).opacity(self.isHovered ? 0.7 : 1)
         }
             .toolTip(self.title)
