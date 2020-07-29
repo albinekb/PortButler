@@ -68,7 +68,6 @@ struct PortRowView: View {
     
     var body: some View {
         RowView(
-            //port: AnyView(),
             port: AnyView(
                 CopyToClipboard(text:String(self.port.port), Text(String(self.port.port)).font(.system(.caption, design: .monospaced)).bold())
             ),
@@ -87,20 +86,20 @@ struct PortRowView: View {
 
 struct PortsListView: View {
     var ports: Array<Port>
+    private let insets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
 
     
     var body: some View {
         Group{
-            List{
-                RowView(port: AnyView(Text("Port")), pid: {Text("Pid")}, title: AnyView(Text("Title")), action: AnyView(Text("Open"))).frame(height: 40)
-                .introspectScrollView { (scroll: NSScrollView) in scroll.hasVerticalScroller = false }
-            }
-            .listStyle(SidebarListStyle()).frame(maxHeight: 30)
+            RowView(port: AnyView(Text("Port")), pid: {Text("Pid")}, title: AnyView(Text("Title")), action: AnyView(Text("Open")))
+                .padding(self.insets)
+                .frame(height: 30)
             
             List(self.ports, id: \.self) { port in
               PortRowView(port: port).frame(height: 40)
             }
             .listStyle(SidebarListStyle())
+            .listRowInsets(self.insets)
         }
     }
 
