@@ -33,11 +33,26 @@ import Introspect
 //                    )
 //            }
 
+struct ClipboardIcon: View {
+    var isCopied: Bool;
+    var body: some View {
+        HStack{
+            if !isCopied {
+                Image(nsImage: NSImage(named: "paperclipCircle")!.image(withTintColor: NSColor.systemBlue))
+            } else {
+                Image(nsImage: NSImage(named: "checkmarkCircle")!.image(withTintColor: NSColor.systemGray))
+            }
+        }
+    }
+    
+}
+
 struct CopyToClipboard<Child>: View where Child: View {
     var text: String
     private var child: Child
     
-    @State var isHovered: Bool = false
+    @State private var isHovered: Bool = false
+    @State private var isCopied: Bool = false
 
 //    private let textFieldObserver = TextFieldObserver()
 
@@ -48,20 +63,23 @@ struct CopyToClipboard<Child>: View where Child: View {
     }
 
     var body: some View {
-        HStack{
-            AnyView(self.child).onTapGesture {
-                self.copyString()
-            }
-            Button(action: self.copyString) {
-                Image(nsImage: NSImage(named: NSImage.shareTemplateName)!.image(withTintColor: NSColor.systemBlue)).opacity(self.isHovered ? 0.7 : 1)
-            }
+        HStack(alignment: .center){
+            AnyView(self.child)
+            Button(action: self.copyString){ ClipboardIcon(isCopied: self.isCopied) }
                 .toolTip("Copy port to clipboard")
                 .buttonStyle(PlainButtonStyle())
                 .onHover(perform: { hovered in
+                    if self.isCopied {
+                        if self.isHovered {
+                            self.isHovered = false
+                            NSCursor.pop()
+                        }
+                        return
+                    }
                     self.isHovered = hovered
                     if hovered { NSCursor.pointingHand.push() } else { NSCursor.pop() }
                 })
-                .onTapGesture(perform: self.copyString)
+                .opacity(self.isHovered ? 0.7 : 1)
         }
     }
     
@@ -69,6 +87,10 @@ struct CopyToClipboard<Child>: View where Child: View {
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
         pasteboard.setString(self.text, forType: NSPasteboard.PasteboardType.string)
-        NotificationCenter.default.post(name: NSNotification.PopoverRequestClose, object: nil)
+        self.isCopied = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.isCopied = false
+        }
+        //NotificationCenter.default.post(name: NSNotification.PopoverRequestClose, object: nil)
     }
 }
