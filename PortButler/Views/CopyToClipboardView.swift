@@ -32,21 +32,23 @@ import Introspect
 //                        for: .editingDidBegin
 //                    )
 //            }
-
+//NSImageNameQuickLookTemplate
 struct ClipboardIcon: View {
     var isCopied: Bool;
     var body: some View {
         HStack{
             if !isCopied {
-                Image(nsImage: NSImage(named: "paperclipCircle")!
+//                Image(nsImage: NSImage(named: "paperclipCircle")!
+                Image(nsImage: NSImage(named: "NSShareTemplate")!
                     .image(withTintColor: NSColor.systemBlue))
-                    .resizable()
-                    .frame(width: 16, height: 16)
+//                    .resizable()
+//                    .frame(width: 16, height: 16)
             } else {
-                Image(nsImage: NSImage(named: "checkmarkCircle")!
+//                Image(nsImage: NSImage(named: "checkmarkCircle")!
+                Image(nsImage: NSImage(named: "NSMenuOnStateTemplate")!
                     .image(withTintColor: NSColor.systemGray))
-                    .resizable()
-                    .frame(width: 16, height: 16)
+//                    .resizable()
+//                    .frame(width: 16, height: 16)
             }
         }
     }
