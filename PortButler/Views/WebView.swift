@@ -140,7 +140,7 @@ struct BrowserTitleView: View {
     @ObservedObject private var webView = ObservableWebView()
     var body: some View {
         AnyView(
-            VStack{
+            Group{
                 if self.webView.isLoading  {
                     ProgressIndicator{
                         $0.style = .spinning
@@ -150,12 +150,21 @@ struct BrowserTitleView: View {
                         $0.controlSize = .small
                     }
                 } else {
-                    Text(self.webView.title)
+                    Text(self.webView.title).lineLimit(2).font(.system(size: 12, weight: .regular))
                 }
             }
         ).onAppear{
-            self.webView.load(url: URL(string: "http://localhost:" + String(self.port))!)
+            self.handleAppear()
         }
+    }
+    
+    func handleAppear () {
+        guard let url = URL(string: "http://localhost:" + String(self.port)) else {
+            print("Error getting URL from port:")
+            print(self.port)
+            return
+        }
+        self.webView.load(url: url)
     }
 }
 

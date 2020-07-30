@@ -26,10 +26,10 @@ struct RowView<Child>: View where Child: View {
         VStack(alignment: .leading) {
             GeometryReader { geometry in
                 HStack(alignment: .top) {
-                    HStack{AnyView(self.port);Spacer(minLength: 0)}.frame(width: ((geometry.size.width / 12) * 3))
+                    HStack{AnyView(self.port);Spacer(minLength: 0)}.frame(width: ((geometry.size.width / 12) * 2.5))
+                    HStack{AnyView(self.action)}.frame(width: ((geometry.size.width / 12) * 1.5))
                     //HStack{Group(content: self.pid);Spacer(minLength: 0)}.frame(width: geometry.size.width / 4)
                     HStack{AnyView(self.title);Spacer(minLength: 0)}.frame(minWidth: ((geometry.size.width / 12) * 7), maxWidth: .infinity)
-                    HStack{Spacer(minLength: 0);AnyView(self.action);}.frame(width: ((geometry.size.width / 12) * 1.5))
                 }
             }
         }
@@ -72,9 +72,12 @@ struct PortRowView: View {
                 CopyToClipboard(text:String(self.port.port), Text(String(self.port.port)).font(.system(.caption, design: .monospaced)).bold())
             ),
             pid: {Text(String(self.port.netstat?.pid ?? "")).font(.system(.caption, design: .monospaced))},
-            title: AnyView(BrowserTitleView(port: self.port.port)),
+            title: AnyView(HStack(alignment: .top){
+                BrowserTitleView(port: self.port.port)
+            }),
             action: AnyView(OpenPageButton(title: "Open URL", action: self.openUrl))
         )
+            .frame(minHeight: 42, maxHeight: 80)
     }
     
     
