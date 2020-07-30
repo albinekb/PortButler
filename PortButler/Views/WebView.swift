@@ -135,20 +135,6 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
     }
 }
 
-struct ProgressIndicator: NSViewRepresentable {
-    
-    typealias TheNSView = NSProgressIndicator
-    var configuration = { (view: TheNSView) in }
-    
-    func makeNSView(context: NSViewRepresentableContext<ProgressIndicator>) -> NSProgressIndicator {
-        TheNSView()
-    }
-    
-    func updateNSView(_ nsView: NSProgressIndicator, context: NSViewRepresentableContext<ProgressIndicator>) {
-        configuration(nsView)
-    }
-}
-
 struct BrowserTitleView: View {
     var port: Int
     @ObservedObject private var webView = ObservableWebView()
