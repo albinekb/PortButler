@@ -12,7 +12,7 @@ This app shows running servers on localhost posts
 
 - Currently hard-coded to look at servers between `2999-4999`
 - Checks servers using `netstat`, very fast
-- Loads page in `WKWebView` to get title, webview is destroyed after to save memory
+- Loads page in `WKWebView` to get title, webview is destroyed when done to save memory
 
 # Installing
 
