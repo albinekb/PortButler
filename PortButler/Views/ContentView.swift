@@ -17,7 +17,12 @@ struct ContentView: View {
             if self.ports.ports.count > 0 {
                 PortsListView(ports: self.ports.ports)
             } else {
-                HStack(alignment: .center){Text("No ports open")}.frame(maxHeight: .infinity)
+                HStack(alignment: .center){
+                    VStack{
+                        Text("No ports open")
+                        Button(action: self.ports.scan){Text("Scan")}
+                    }
+                }.frame(minWidth: 200, maxHeight: .infinity)
             }
         }
     }

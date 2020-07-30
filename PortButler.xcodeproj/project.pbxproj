@@ -13,6 +13,7 @@
 		33324AC724CF219C00F80719 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33324AC624CF219C00F80719 /* WebView.swift */; };
 		337CD86C24CDFE89005891E7 /* PortsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86B24CDFE89005891E7 /* PortsListView.swift */; };
 		337CD86F24CE274F005891E7 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86E24CE274F005891E7 /* Array.swift */; };
+		3382B6F924D2C4290034A562 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382B6F824D2C4290034A562 /* ProgressIndicator.swift */; };
 		338D5A6B24D03EB0008EF9DD /* StatusItemContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */; };
 		33BBAFD824D16CEF00CF0711 /* CopyToClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFD724D16CEF00CF0711 /* CopyToClipboardView.swift */; };
 		33BBAFDA24D1734300CF0711 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFD924D1734300CF0711 /* NSTextField.swift */; };
@@ -38,6 +39,7 @@
 		33324AC624CF219C00F80719 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		337CD86B24CDFE89005891E7 /* PortsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortsListView.swift; sourceTree = "<group>"; };
 		337CD86E24CE274F005891E7 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		3382B6F824D2C4290034A562 /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemContainerView.swift; sourceTree = "<group>"; };
 		33BBAFD724D16CEF00CF0711 /* CopyToClipboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyToClipboardView.swift; sourceTree = "<group>"; };
 		33BBAFD924D1734300CF0711 /* NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				33324AC624CF219C00F80719 /* WebView.swift */,
 				338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */,
 				33BBAFD724D16CEF00CF0711 /* CopyToClipboardView.swift */,
+				3382B6F824D2C4290034A562 /* ProgressIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				33E37D9624CDD76C00698877 /* ObservablePorts.swift in Sources */,
 				33E3C1AA24CDC912005B096B /* AppDelegate.swift in Sources */,
 				33F997A224D02F4D008D314B /* DisabledScroll.swift in Sources */,
+				3382B6F924D2C4290034A562 /* ProgressIndicator.swift in Sources */,
 				33BBAFD824D16CEF00CF0711 /* CopyToClipboardView.swift in Sources */,
 				338D5A6B24D03EB0008EF9DD /* StatusItemContainerView.swift in Sources */,
 				33BBAFDC24D17BF000CF0711 /* NSImage.swift in Sources */,
