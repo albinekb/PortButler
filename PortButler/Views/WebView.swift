@@ -96,9 +96,11 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
     @Published var title: String = ""
     @Published var isLoading: Bool = true
     @Published var estimatedProgress: Double = 0
-    private let webView = WKWebView(frame: .zero)
+    private var isDone: Bool = false
+    private var webView: WKWebView? = WKWebView(frame: .zero)
     
     public func load(url: URL){
+        guard let webView = self.webView else {return}
         webView.navigationDelegate = self
         webView.load(URLRequest(url: url))
         //webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
@@ -106,6 +108,7 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let webView = self.webView else {return}
         if keyPath == "title" {
             guard let title = webView.title else {
                 self.title = "Error"
@@ -126,9 +129,18 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
         self.maybeUpdateTitle(title)
     }
     
+    public func unload () {
+        self.webView = nil
+        self.isDone = true
+    }
+    
     func maybeUpdateTitle (_ title: String) {
         if title.count > 2 {
-             self.title = title
+            self.title = title
+
+            self.isDone = true
+            self.webView = nil
+
          } else if self.title.count == 0 {
              self.title = "-"
          }
@@ -136,8 +148,10 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
 }
 
 struct BrowserTitleView: View {
+    let NC = NotificationCenter.default
     var port: Int
     @ObservedObject private var webView = ObservableWebView()
+    
     var body: some View {
         AnyView(
             Group{
@@ -154,11 +168,23 @@ struct BrowserTitleView: View {
                 }
             }
         ).onAppear{
-            self.handleAppear()
+            self.NC.addObserver(forName: NSNotification.ViewDidAppear, object: nil, queue: nil,
+            using: self.handleAppearObserver)
+        }
+        .onDisappear{
+            print("Hello")
+            self.NC.removeObserver(self)
+            self.webView.unload()
         }
     }
     
-    func handleAppear () {
+    func handleAppearObserver(_ notification: Notification) {
+        print("handleObserver")
+        self.loadWebView()
+    }
+    
+    func loadWebView () {
+        print("handleAppear")
         guard let url = URL(string: "http://localhost:" + String(self.port)) else {
             print("Error getting URL from port:")
             print(self.port)

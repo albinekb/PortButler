@@ -26,6 +26,7 @@ import AppKit
 
 extension NSNotification {
     static let PopoverRequestClose = NSNotification.Name.init("PopoverRequestClose")
+    static let ViewDidAppear = Notification.Name("ViewDidAppear")
 }
 
 
