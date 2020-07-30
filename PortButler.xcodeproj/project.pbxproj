@@ -160,6 +160,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33E3C1B924CDC914005B096B /* Build configuration list for PBXNativeTarget "PortButler" */;
 			buildPhases = (
+				3382B6FD24D2D3B70034A562 /* Fix SPM */,
 				33E3C1A224CDC912005B096B /* Sources */,
 				33E3C1A324CDC912005B096B /* Frameworks */,
 				33E3C1A424CDC912005B096B /* Resources */,
@@ -167,6 +168,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				3382B70124D2D3CC0034A562 /* PBXTargetDependency */,
+				3382B6FF24D2D3C80034A562 /* PBXTargetDependency */,
 			);
 			name = PortButler;
 			packageProductDependencies = (
@@ -227,6 +230,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3382B6FD24D2D3B70034A562 /* Fix SPM */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fix SPM";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -d \"${SYMROOT}/Release${EFFECTIVE_PLATFORM_NAME}/\" ] && [ \"${SYMROOT}/Release${EFFECTIVE_PLATFORM_NAME}/\" != \"${SYMROOT}/${CONFIGURATION}${EFFECTIVE_PLATFORM_NAME}/\" ] \nthen\n  cp -f -R \"${SYMROOT}/Release${EFFECTIVE_PLATFORM_NAME}/\" \"${SYMROOT}/${CONFIGURATION}${EFFECTIVE_PLATFORM_NAME}/\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		33E3C1A224CDC912005B096B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -255,6 +279,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3382B6FF24D2D3C80034A562 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 3382B6FE24D2D3C80034A562 /* ShellOut */;
+		};
+		3382B70124D2D3CC0034A562 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 3382B70024D2D3CC0034A562 /* Introspect */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		33E3C1B224CDC914005B096B /* Main.storyboard */ = {
@@ -474,6 +509,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3382B6FE24D2D3C80034A562 /* ShellOut */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33E37D9224CDD6AE00698877 /* XCRemoteSwiftPackageReference "ShellOut" */;
+			productName = ShellOut;
+		};
+		3382B70024D2D3CC0034A562 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33F9979E24D02DAB008D314B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
 		33E37D9324CDD6AE00698877 /* ShellOut */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 33E37D9224CDD6AE00698877 /* XCRemoteSwiftPackageReference "ShellOut" */;
