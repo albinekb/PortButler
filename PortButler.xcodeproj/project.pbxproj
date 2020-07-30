@@ -14,6 +14,7 @@
 		337CD86C24CDFE89005891E7 /* PortsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86B24CDFE89005891E7 /* PortsListView.swift */; };
 		337CD86F24CE274F005891E7 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CD86E24CE274F005891E7 /* Array.swift */; };
 		3382B6F924D2C4290034A562 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382B6F824D2C4290034A562 /* ProgressIndicator.swift */; };
+		3382B6FB24D2C6CA0034A562 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382B6FA24D2C6CA0034A562 /* Constants.swift */; };
 		338D5A6B24D03EB0008EF9DD /* StatusItemContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */; };
 		33BBAFD824D16CEF00CF0711 /* CopyToClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFD724D16CEF00CF0711 /* CopyToClipboardView.swift */; };
 		33BBAFDA24D1734300CF0711 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFD924D1734300CF0711 /* NSTextField.swift */; };
@@ -40,6 +41,7 @@
 		337CD86B24CDFE89005891E7 /* PortsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortsListView.swift; sourceTree = "<group>"; };
 		337CD86E24CE274F005891E7 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		3382B6F824D2C4290034A562 /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
+		3382B6FA24D2C6CA0034A562 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemContainerView.swift; sourceTree = "<group>"; };
 		33BBAFD724D16CEF00CF0711 /* CopyToClipboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyToClipboardView.swift; sourceTree = "<group>"; };
 		33BBAFD924D1734300CF0711 /* NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				33E3C1C324CDCE5C005B096B /* StatusBarController.swift */,
 				33E3C1C524CDCE76005B096B /* EventMonitor.swift */,
+				3382B6FA24D2C6CA0034A562 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				337CD86F24CE274F005891E7 /* Array.swift in Sources */,
+				3382B6FB24D2C6CA0034A562 /* Constants.swift in Sources */,
 				33324ABA24CEE52700F80719 /* NSEvent.swift in Sources */,
 				337CD86C24CDFE89005891E7 /* PortsListView.swift in Sources */,
 				33324AC324CF151600F80719 /* Tooltip.swift in Sources */,

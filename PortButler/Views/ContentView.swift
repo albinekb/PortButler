@@ -8,6 +8,33 @@
 
 import SwiftUI
 
+struct EmptyState: View {
+    var isLoading: Bool;
+    var scan: () -> Void;
+    
+    var body: some View {
+        HStack(alignment: .center){
+            VStack{
+                VStack{
+                    Text("No open ports found in range ").font(.system(.caption)).padding(10)
+                    Text(PortConstants.portRangeFormatted).font(.system(.caption, design: .monospaced))
+                }
+                if isLoading {
+                      ProgressIndicator{
+                          $0.style = .spinning
+                          $0.sizeToFit()
+                          $0.usesThreadedAnimation = true
+                          $0.startAnimation(nil)
+                          $0.controlSize = .small
+                      }
+                } else {
+                    Button(action: scan){Text("Scan")}
+                }
+            }
+        }.frame(minWidth: 200, maxHeight: .infinity)
+    }
+}
+
 struct ContentView: View {
      @ObservedObject var ports = ObservablePorts()
     
@@ -17,22 +44,7 @@ struct ContentView: View {
             if self.ports.ports.count > 0 {
                 PortsListView(ports: self.ports.ports)
             } else {
-                HStack(alignment: .center){
-                    VStack{
-                        Text("No ports open")
-                        if ports.isLoading {
-                              ProgressIndicator{
-                                  $0.style = .spinning
-                                  $0.sizeToFit()
-                                  $0.usesThreadedAnimation = true
-                                  $0.startAnimation(nil)
-                                  $0.controlSize = .small
-                              }
-                        } else {
-                            Button(action: self.ports.scan){Text("Scan")}
-                        }
-                    }
-                }.frame(minWidth: 200, maxHeight: .infinity)
+                EmptyState(isLoading: self.ports.isLoading, scan: scan)
             }
         }
     }

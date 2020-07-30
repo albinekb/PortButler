@@ -84,7 +84,7 @@ class ObservablePorts: ObservableObject {
                 )
             }.filteredByType(NetstatEntry.self)
                 
-            let entries: Array<NetstatEntry> = rows.filter{ $0.port > 2999 && $0.port < 3999 }
+            let entries: Array<NetstatEntry> = rows.filter{ $0.port > PortConstants.lowerLimit && $0.port < PortConstants.upperLimit }
             let ports: Array<Port> = entries.map{Port(netstat: $0, port: $0.port, state: $0.state)}
             
             self.ports = ports
