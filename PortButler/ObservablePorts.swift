@@ -52,12 +52,12 @@ func getFolderFromPid(pid: String) {
 
 class ObservablePorts: ObservableObject {
     @Published var ports: Array<Port> = []
+    @Published var isLoading: Bool = false
     
     var timer = Timer()
     
-    
-    func scan () {
-        print("Start: scan()")
+    private func runScan () {
+        self.isLoading = true
         do {
             let output = try shellOut(to: "netstat", arguments: ["-Watnlv"])
             let lines: Array<String> = output.components(separatedBy: "\n")
@@ -84,15 +84,23 @@ class ObservablePorts: ObservableObject {
                 )
             }.filteredByType(NetstatEntry.self)
                 
-            let entries: Array<NetstatEntry> = rows.filter{ $0.port > 2999 && $0.port < 4999 }
+            let entries: Array<NetstatEntry> = rows.filter{ $0.port > 2999 && $0.port < 3999 }
             let ports: Array<Port> = entries.map{Port(netstat: $0, port: $0.port, state: $0.state)}
             
             self.ports = ports
+            self.isLoading = false
         } catch {
+            self.isLoading = false
             let error = error as! ShellOutError
             print(error.message) // Prints STDERR
             print(error.output) // Prints STDOUT
         }
-
+    }
+    
+    
+    func scan () {
+        print("Start: scan()")
+        self.runScan()
+        print("Finish: scan()")
     }
 }

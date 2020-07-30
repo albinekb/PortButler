@@ -20,7 +20,17 @@ struct ContentView: View {
                 HStack(alignment: .center){
                     VStack{
                         Text("No ports open")
-                        Button(action: self.ports.scan){Text("Scan")}
+                        if ports.isLoading {
+                              ProgressIndicator{
+                                  $0.style = .spinning
+                                  $0.sizeToFit()
+                                  $0.usesThreadedAnimation = true
+                                  $0.startAnimation(nil)
+                                  $0.controlSize = .small
+                              }
+                        } else {
+                            Button(action: self.ports.scan){Text("Scan")}
+                        }
                     }
                 }.frame(minWidth: 200, maxHeight: .infinity)
             }
