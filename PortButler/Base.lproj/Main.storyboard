@@ -22,8 +22,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="bsK-Lx-zEA"/>
-                                        <menuItem title="Refresh" id="Hoe-KP-tlP" userLabel="Refresh">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="Refresh" image="NSRefreshTemplate" keyEquivalent="r" id="Hoe-KP-tlP" userLabel="Refresh">
                                             <connections>
                                                 <action selector="refreshAction:" target="Voe-Tx-rLC" id="sB3-Ug-dvP"/>
                                             </connections>
@@ -55,4 +54,7 @@
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+    </resources>
 </document>
