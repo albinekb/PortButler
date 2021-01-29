@@ -51,6 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBar = StatusBarController.init(popover, menu: menu)
         
         self.popover.contentViewController?.view.window?.becomeKey()
+        self.contentView?.scan()
         
     }
 

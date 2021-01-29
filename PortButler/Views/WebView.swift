@@ -172,19 +172,17 @@ struct BrowserTitleView: View {
             using: self.handleAppearObserver)
         }
         .onDisappear{
-            print("Hello")
             self.NC.removeObserver(self)
             self.webView.unload()
         }
     }
     
     func handleAppearObserver(_ notification: Notification) {
-        print("handleObserver")
+        //print("handleObserver")
         self.loadWebView()
     }
     
     func loadWebView () {
-        print("handleAppear")
         guard let url = URL(string: "http://localhost:" + String(self.port)) else {
             print("Error getting URL from port:")
             print(self.port)
@@ -194,21 +192,4 @@ struct BrowserTitleView: View {
     }
 }
 
-//struct BrowserView: View {
-//    private let browser = WebBrowserView()
-//    var port: Int
-//
-//    var body: some View {
-//        HStack {
-//            browser
-//                .onAppear() {
-//                    self.browser
-//                        .load(url: URL(string: "http://localhost:" + String(self.port))!)
-//            }.frame(width:0,height: 0)
-//
-//
-//        }
-//        .padding()
-//    }
-//}
 #endif
