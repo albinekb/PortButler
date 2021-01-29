@@ -14,10 +14,9 @@ class MainViewController: NSViewController {
         super.viewDidAppear()
         
         
-        //Needed so clicks outside the app trigger
-        //events to close the popover
-//        NSApp.activate(ignoringOtherApps: false)
-
+        // Needed so clicks outside the app trigger
+        // events to close the popover
+        // NSApp.activate(ignoringOtherApps: false)
         // You can use a notification and observe it in a view model where you want to fetch the data for your SwiftUI view every time the popover appears.
          NotificationCenter.default.post(name: Notification.Name("ViewDidAppear"), object: nil)
     }

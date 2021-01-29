@@ -13,9 +13,12 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     var popover = NSPopover.init()
 
+    @IBOutlet weak var menu: NSMenu?
+    
     var statusBar: StatusBarController?
     
     var contentView: ContentView?
+ 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         NSApp.setActivationPolicy(.accessory)
@@ -40,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
         // Create the Status Bar Item with the Popover
-        statusBar = StatusBarController.init(popover)
+        statusBar = StatusBarController.init(popover, menu: menu)
         
         self.popover.contentViewController?.view.window?.becomeKey()
         
