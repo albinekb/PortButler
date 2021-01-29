@@ -21,6 +21,13 @@
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="bsK-Lx-zEA"/>
+                                        <menuItem title="Refresh" id="Hoe-KP-tlP" userLabel="Refresh">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="refreshAction:" target="Voe-Tx-rLC" id="sB3-Ug-dvP"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
                                         <menuItem title="Quit PortButler" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
@@ -39,6 +46,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="PortButler" customModuleProvider="target">
                     <connections>
                         <outlet property="menu" destination="uQy-DD-JDr" id="rZh-MB-feM"/>
+                        <outlet property="refreshMenuItem" destination="Hoe-KP-tlP" id="PfK-We-GiA"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>

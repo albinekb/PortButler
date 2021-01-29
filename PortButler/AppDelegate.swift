@@ -14,10 +14,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var popover = NSPopover.init()
 
     @IBOutlet weak var menu: NSMenu?
+    @IBOutlet weak var refreshMenuItem: NSMenuItem?
     
     var statusBar: StatusBarController?
     
     var contentView: ContentView?
+    
+    @IBAction func refreshAction(_ sender: NSMenuItem)  {
+        self.contentView?.scan()
+     }
  
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
