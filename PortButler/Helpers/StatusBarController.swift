@@ -20,16 +20,18 @@ class StatusBarController {
     private var statusItem: NSStatusItem
     private var popover: NSPopover
     private var menu: NSMenu?
+    private var contentView: ContentView?
     let NC = NotificationCenter.default
 
 
     
-    init(_ popover: NSPopover, menu: NSMenu?)
+    init(_ popover: NSPopover, menu: NSMenu?, contentView: ContentView?)
     {
         self.popover = popover
         self.menu = menu
+        self.contentView = contentView
 
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem = NSStatusBar.system.statusItem(withLength: 28)
         initButton()
     }
     
@@ -52,17 +54,12 @@ class StatusBarController {
         
 
         if event.type == NSEvent.EventType.rightMouseUp {
-            if (popover.isShown) {
-                self.hidePopover(sender)
-            }
-            if let menu = menu {
-                statusItem.popUpMenu(menu)
-            }
+            self.showMenu(sender)
         } else if event.type == NSEvent.EventType.leftMouseUp {
             if (popover.isShown) {
                 self.hidePopover(sender)
             } else {
-                self.togglePopover(sender: sender)
+                self.showPopover(sender)
             }
             
         }
@@ -86,10 +83,20 @@ class StatusBarController {
         //NSRunningApplication.current.activate(options:NSApplication.ActivationOptions.activateIgnoringOtherApps)
         guard let statusBarButton = statusItem.button else { return }
         
-        
 
     
         popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
+        contentView?.scan()
+    }
+    
+    func showMenu(_ sender: AnyObject?) {
+        if (popover.isShown) {
+            self.hidePopover(sender)
+        }
+
+        statusItem.menu = menu
+        statusItem.button?.performClick(nil)
+        statusItem.menu = nil
     }
     
     func hidePopover(_ sender: AnyObject?) {

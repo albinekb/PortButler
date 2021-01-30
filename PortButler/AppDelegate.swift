@@ -36,7 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Set the SwiftUI's ContentView to the Popover's ContentViewController
         popover.contentViewController = MainViewController()
         
-        popover.contentSize = NSSize(width: 320, height: 160)
+        //popover.contentSize = NSSize(width: 320, height: 160)
         popover.contentViewController?.view = NSHostingView(rootView: contentView)
         //popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         popover.animates = false
@@ -48,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
         // Create the Status Bar Item with the Popover
-        statusBar = StatusBarController.init(popover, menu: menu)
+        statusBar = StatusBarController.init(popover, menu: menu, contentView: contentView)
         
         self.popover.contentViewController?.view.window?.becomeKey()
         self.contentView?.scan()
@@ -62,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillResignActive(_ notification: Notification) {
         statusBar?.hidePopover(nil)
     }
+
     
     func applicationWillBecomeActive(_ notification: Notification) {
         self.contentView?.scan()

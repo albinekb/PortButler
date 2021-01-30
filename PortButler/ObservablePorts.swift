@@ -53,10 +53,19 @@ func getFolderFromPid(pid: String) {
 class ObservablePorts: ObservableObject {
     @Published var ports: Array<Port> = []
     @Published var isLoading: Bool = false
+    @Published var lastUpdated: Date? = nil
     
     var timer = Timer()
     
     private func runScan () {
+        if let lastUpdated = self.lastUpdated {
+            let elapsedTime = Date().timeIntervalSince(lastUpdated)
+            if (elapsedTime < 5) {
+                print("Stopping")
+                return
+            }
+        }
+        
         self.isLoading = true
         do {
             let output = try shellOut(to: "netstat", arguments: ["-Watnlv"])
@@ -87,7 +96,10 @@ class ObservablePorts: ObservableObject {
             let entries: Array<NetstatEntry> = rows.filter{ $0.port > PortConstants.lowerLimit && $0.port < PortConstants.upperLimit }
             let ports: Array<Port> = entries.map{Port(netstat: $0, port: $0.port, state: $0.state)}
             
-            self.ports = ports
+            self.ports = ports.sorted {
+                $0.port < $1.port
+            }
+            self.lastUpdated = Date()
             self.isLoading = false
         } catch {
             self.isLoading = false

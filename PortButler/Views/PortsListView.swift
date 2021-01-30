@@ -107,7 +107,7 @@ struct PortsListView: View {
                 .listStyle(SidebarListStyle())
                 .padding(self.listInsets)
                
-        }.frame(minWidth: 300, idealWidth: 320, maxWidth: 600, minHeight: 50, idealHeight: 50, maxHeight: 320, alignment: .top)
+        }.frame(minWidth: 300, idealWidth: 320, maxWidth: 600, minHeight: 50,  maxHeight: 600, alignment: .top)
     }
 
 }

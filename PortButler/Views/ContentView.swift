@@ -49,6 +49,8 @@ struct ContentView: View {
         }
     }
     
+
+    
     public func scan () {
         ports.scan()
     }
