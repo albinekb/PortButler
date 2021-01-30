@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var menu: NSMenu?
     @IBOutlet weak var refreshMenuItem: NSMenuItem?
+    @IBOutlet weak var lastUpdatedMenuItem: NSMenuItem?
     
     var statusBar: StatusBarController?
     
@@ -41,10 +42,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
         popover.animates = false
         popover.behavior = .transient
-    
+
         
-
-
+        if let item = lastUpdatedMenuItem {
+            ObservablePorts.shared.setLastUpdatedItem(item: item)
+        }
+        
 
 
         // Create the Status Bar Item with the Popover

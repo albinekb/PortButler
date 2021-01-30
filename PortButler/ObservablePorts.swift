@@ -57,6 +57,8 @@ class ObservablePorts: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var lastUpdated: Date? = nil
     
+    var lastUpdatedMenuItem: NSMenuItem?
+    
     var timer = Timer()
     
     private func runScan () {
@@ -101,7 +103,14 @@ class ObservablePorts: ObservableObject {
             self.ports = ports.sorted {
                 $0.port < $1.port
             }
-            self.lastUpdated = Date()
+            let lastUpdated = Date()
+            
+            self.lastUpdated = lastUpdated
+            if let menuItem = lastUpdatedMenuItem {
+                let dateFormatterPrint = DateFormatter()
+                dateFormatterPrint.dateFormat = "HH:mm:SS"
+                menuItem.title = "Last scan \(dateFormatterPrint.string(from: lastUpdated))"
+            }
             self.isLoading = false
         } catch {
             self.isLoading = false
@@ -109,6 +118,10 @@ class ObservablePorts: ObservableObject {
             print(error.message) // Prints STDERR
             print(error.output) // Prints STDOUT
         }
+    }
+    
+    func setLastUpdatedItem (item: NSMenuItem) {
+        self.lastUpdatedMenuItem = item
     }
     
     

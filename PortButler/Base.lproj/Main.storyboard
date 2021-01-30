@@ -22,6 +22,9 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="bsK-Lx-zEA"/>
+                                        <menuItem title="Last updated" enabled="NO" id="ucc-Fn-imc" userLabel="LastUpdated">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
                                         <menuItem title="Refresh" image="NSRefreshTemplate" keyEquivalent="r" id="Hoe-KP-tlP" userLabel="Refresh">
                                             <connections>
                                                 <action selector="refreshAction:" target="Voe-Tx-rLC" id="sB3-Ug-dvP"/>
@@ -44,6 +47,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="PortButler" customModuleProvider="target">
                     <connections>
+                        <outlet property="lastUpdatedMenuItem" destination="ucc-Fn-imc" id="MuM-ey-cF8"/>
                         <outlet property="menu" destination="uQy-DD-JDr" id="rZh-MB-feM"/>
                         <outlet property="refreshMenuItem" destination="Hoe-KP-tlP" id="PfK-We-GiA"/>
                     </connections>
