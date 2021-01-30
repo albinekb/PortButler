@@ -36,7 +36,7 @@ struct EmptyState: View {
 }
 
 struct ContentView: View {
-     @ObservedObject var ports = ObservablePorts()
+    @ObservedObject var ports = ObservablePorts.shared
     
   
     var body: some View {

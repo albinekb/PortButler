@@ -51,6 +51,8 @@ func getFolderFromPid(pid: String) {
 
 
 class ObservablePorts: ObservableObject {
+    static let shared = ObservablePorts()
+
     @Published var ports: Array<Port> = []
     @Published var isLoading: Bool = false
     @Published var lastUpdated: Date? = nil

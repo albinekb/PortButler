@@ -48,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
         // Create the Status Bar Item with the Popover
-        statusBar = StatusBarController.init(popover, menu: menu, contentView: contentView)
+        statusBar = StatusBarController.init(popover, menu: menu)
         
         self.popover.contentViewController?.view.window?.becomeKey()
         self.contentView?.scan()

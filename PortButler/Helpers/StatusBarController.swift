@@ -20,16 +20,16 @@ class StatusBarController {
     private var statusItem: NSStatusItem
     private var popover: NSPopover
     private var menu: NSMenu?
-    private var contentView: ContentView?
+    
     let NC = NotificationCenter.default
 
 
     
-    init(_ popover: NSPopover, menu: NSMenu?, contentView: ContentView?)
+    init(_ popover: NSPopover, menu: NSMenu?)
     {
         self.popover = popover
         self.menu = menu
-        self.contentView = contentView
+       
 
         statusItem = NSStatusBar.system.statusItem(withLength: 28)
         initButton()
@@ -86,7 +86,7 @@ class StatusBarController {
 
     
         popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
-        contentView?.scan()
+        ObservablePorts.shared.scan()
     }
     
     func showMenu(_ sender: AnyObject?) {
