@@ -1,11 +1,11 @@
 {
   "name": "PortButler",
-  "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:albinekb/PortButler.git",
   "author": "Albin Ekblom <albinekblom@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "xcodebuild -scheme PortButler build"
+    "build": "xcodebuild -scheme PortButler build",
+    "install:app": "rm -rf /Applications/PortButler.app && mv DerivedData/PortButler/Build/Products/Debug/PortButler.app /Applications",
+    "build:install": "yarn build && yarn install:app"
   }
 }
