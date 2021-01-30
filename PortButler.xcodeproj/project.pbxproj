@@ -28,7 +28,6 @@
 		33E3C1B424CDC914005B096B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33E3C1B224CDC914005B096B /* Main.storyboard */; };
 		33E3C1C124CDCE18005B096B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1C024CDCE18005B096B /* MainViewController.swift */; };
 		33E3C1C424CDCE5C005B096B /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1C324CDCE5C005B096B /* StatusBarController.swift */; };
-		33E3C1C624CDCE76005B096B /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3C1C524CDCE76005B096B /* EventMonitor.swift */; };
 		33F997A024D02DAB008D314B /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 33F9979F24D02DAB008D314B /* Introspect */; };
 		33F997A224D02F4D008D314B /* DisabledScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F997A124D02F4D008D314B /* DisabledScroll.swift */; };
 /* End PBXBuildFile section */
@@ -57,7 +56,6 @@
 		33E3C1B624CDC914005B096B /* PortButler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PortButler.entitlements; sourceTree = "<group>"; };
 		33E3C1C024CDCE18005B096B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		33E3C1C324CDCE5C005B096B /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
-		33E3C1C524CDCE76005B096B /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		33F997A124D02F4D008D314B /* DisabledScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledScroll.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				33E3C1C324CDCE5C005B096B /* StatusBarController.swift */,
-				33E3C1C524CDCE76005B096B /* EventMonitor.swift */,
 				3382B6FA24D2C6CA0034A562 /* Constants.swift */,
 			);
 			path = Helpers;
@@ -271,7 +268,6 @@
 				33BBAFD824D16CEF00CF0711 /* CopyToClipboardView.swift in Sources */,
 				338D5A6B24D03EB0008EF9DD /* StatusItemContainerView.swift in Sources */,
 				33BBAFDC24D17BF000CF0711 /* NSImage.swift in Sources */,
-				33E3C1C624CDCE76005B096B /* EventMonitor.swift in Sources */,
 				33324AC724CF219C00F80719 /* WebView.swift in Sources */,
 				33E3C1C424CDCE5C005B096B /* StatusBarController.swift in Sources */,
 				33E3C1C124CDCE18005B096B /* MainViewController.swift in Sources */,
