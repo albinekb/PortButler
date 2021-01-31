@@ -7,6 +7,6 @@
     "build": "xcodebuild -scheme PortButler build",
     "install:app": "rm -rf /Applications/PortButler.app && mv DerivedData/PortButler/Build/Products/Debug/PortButler.app /Applications",
     "build:install": "yarn build && yarn install:app",
-    "format": "swiftformat ./PortButler"
+    "format": "swiftformat ./PortButler --swiftversion 5"
   }
 }

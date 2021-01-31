@@ -32,7 +32,7 @@ class StatusBarController {
         initButton()
     }
 
-    fileprivate func initButton() {
+    private func initButton() {
         let itemImage = #imageLiteral(resourceName: "StatusIcon")
         itemImage.size = NSSize(width: 16, height: 16)
         itemImage.isTemplate = true
@@ -80,13 +80,13 @@ class StatusBarController {
             hidePopover(sender)
         }
 
-        self.updateLastUpdateItem()
+        updateLastUpdateItem()
         statusItem.menu = menu
         statusItem.button?.performClick(nil)
         statusItem.menu = nil
     }
-    
-    func updateLastUpdateItem () {
+
+    func updateLastUpdateItem() {
         if let menuItem = lastUpdatedMenuItem {
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "HH:mm:SS"

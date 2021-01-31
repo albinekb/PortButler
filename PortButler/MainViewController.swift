@@ -19,9 +19,8 @@ class MainViewController: NSViewController {
 
         ObservablePorts.shared.scan()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 }

@@ -72,14 +72,14 @@ struct CopyToClipboard<Child>: View where Child: View {
         HStack(alignment: .center) {
             Button(action: self.copyString) { AnyView(self.child).toolTip("Copy to clipboard") }
                 .buttonStyle(PlainButtonStyle())
-                            .onHover(perform: { hovered in
-                                if self.isCopied {
-                                        self.isHovered = false
-                                    return
-                                }
-                                self.isHovered = hovered
-                            })
-                            .opacity(self.isHovered ? 0.7 : 1)
+                .onHover(perform: { hovered in
+                    if self.isCopied {
+                        self.isHovered = false
+                        return
+                    }
+                    self.isHovered = hovered
+                })
+                .opacity(self.isHovered ? 0.7 : 1)
 
 //            Button(action: self.copyString){ ClipboardIcon(isCopied: self.isCopied).toolTip("Copy to clipboard") }
 //

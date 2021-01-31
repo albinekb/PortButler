@@ -36,9 +36,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // popover.contentSize = NSSize(width: 320, height: 160)
         popover.contentViewController?.view = NSHostingView(rootView: contentView)
-        
+
         // popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
-        
+
         popover.animates = true
         popover.behavior = .transient
 
@@ -57,7 +57,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let window = AboutWindowController.defaultController.window {
             window.close()
         }
-        
     }
 
     func applicationWillBecomeActive(_: Notification) {

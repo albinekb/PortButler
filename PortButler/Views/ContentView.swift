@@ -45,7 +45,7 @@ struct ContentView: View {
             } else {
                 EmptyState(isLoading: self.ports.isLoading, scan: scan)
             }
-        } 
+        }
     }
 
     public func scan() {
