@@ -8,11 +8,10 @@
 
 import Foundation
 
-
 extension Array {
-   func filteredByType<T> (_: T.Type) -> [T] {
-       return compactMap({ (element) in
-           return element as? T
-       })
-   }
+    func filteredByType<T>(_: T.Type) -> [T] {
+        return compactMap { element in
+            element as? T
+        }
+    }
 }

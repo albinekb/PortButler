@@ -6,21 +6,20 @@
 //  Copyright © 2020 Albin Ekblom. All rights reserved.
 //
 
-import Foundation
 import AppKit
 import Cocoa
+import Foundation
 import SwiftUI
 
 struct ProgressIndicator: NSViewRepresentable {
-    
     typealias TheNSView = NSProgressIndicator
-    var configuration = { (view: TheNSView) in }
-    
-    func makeNSView(context: NSViewRepresentableContext<ProgressIndicator>) -> NSProgressIndicator {
+    var configuration = { (_: TheNSView) in }
+
+    func makeNSView(context _: NSViewRepresentableContext<ProgressIndicator>) -> NSProgressIndicator {
         TheNSView()
     }
-    
-    func updateNSView(_ nsView: NSProgressIndicator, context: NSViewRepresentableContext<ProgressIndicator>) {
+
+    func updateNSView(_ nsView: NSProgressIndicator, context _: NSViewRepresentableContext<ProgressIndicator>) {
         configuration(nsView)
     }
 }

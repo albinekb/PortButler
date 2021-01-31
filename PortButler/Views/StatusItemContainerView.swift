@@ -6,7 +6,6 @@
 //  Copyright © 2020 Albin Ekblom. All rights reserved.
 //
 
-
 import Cocoa
 
 class StatusItemContainerView: NSView {

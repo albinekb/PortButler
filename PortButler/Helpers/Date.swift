@@ -12,7 +12,7 @@ extension Date {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full
         let diff = Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
-        if (diff < 1) {
+        if diff < 1 {
             return "now"
         }
         return formatter.localizedString(for: self, relativeTo: Date())

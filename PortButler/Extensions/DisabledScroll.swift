@@ -6,8 +6,8 @@
 //  Copyright © 2020 Albin Ekblom. All rights reserved.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
 @IBDesignable
 @objc(BCLDisablableScrollView)
@@ -16,11 +16,10 @@ public class DisablableScrollView: NSScrollView {
     @objc(enabled)
     public var isEnabled: Bool = true
 
-    public override func scrollWheel(with event: NSEvent) {
+    override public func scrollWheel(with event: NSEvent) {
         if isEnabled {
             super.scrollWheel(with: event)
-        }
-        else {
+        } else {
             nextResponder?.scrollWheel(with: event)
         }
     }

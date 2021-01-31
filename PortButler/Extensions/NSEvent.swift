@@ -8,19 +8,18 @@
 
 import AppKit
 
-
 extension NSEvent {
     var isRightClickUp: Bool {
-        let rightClick = (self.type == .rightMouseUp)
-        let controlClick = self.modifierFlags.contains(.control)
+        let rightClick = (type == .rightMouseUp)
+        let controlClick = modifierFlags.contains(.control)
         return rightClick || controlClick
     }
 }
 
 extension NSEvent {
     var isRightClickDown: Bool {
-        let rightClick = (self.type == .rightMouseDown)
-        let controlClick = self.modifierFlags.contains(.control)
+        let rightClick = (type == .rightMouseDown)
+        let controlClick = modifierFlags.contains(.control)
         return rightClick || controlClick
     }
 }

@@ -8,38 +8,32 @@
 
 import AppKit
 
-
 extension NSNotification {
-    static let PopoverRequestClose = NSNotification.Name.init("PopoverRequestClose")
-    static let RefreshWebView = NSNotification.Name.init("RefreshWebView")
+    static let PopoverRequestClose = NSNotification.Name("PopoverRequestClose")
+    static let RefreshWebView = NSNotification.Name("RefreshWebView")
     static let ViewDidAppear = Notification.Name("ViewDidAppear")
 }
 
-
 class StatusBarController {
-    //private var statusBar: NSStatusBar
+    // private var statusBar: NSStatusBar
     private var statusItem: NSStatusItem
     private var lastUpdatedMenuItem: NSMenuItem?
     private var popover: NSPopover
     private var menu: NSMenu?
-    
+
     let NC = NotificationCenter.default
 
-
-    
-    init(_ popover: NSPopover, menu: NSMenu?, lastUpdatedMenuItem: NSMenuItem?)
-    {
+    init(_ popover: NSPopover, menu: NSMenu?, lastUpdatedMenuItem: NSMenuItem?) {
         self.popover = popover
         self.menu = menu
         self.lastUpdatedMenuItem = lastUpdatedMenuItem
-       
 
         statusItem = NSStatusBar.system.statusItem(withLength: 28)
         initButton()
     }
-    
-    fileprivate func initButton () {
-        let itemImage =  #imageLiteral(resourceName: "StatusIcon")
+
+    fileprivate func initButton() {
+        let itemImage = #imageLiteral(resourceName: "StatusIcon")
         itemImage.size = NSSize(width: 16, height: 16)
         itemImage.isTemplate = true
         if let statusBarButton = statusItem.button {
@@ -49,80 +43,68 @@ class StatusBarController {
             statusBarButton.action = #selector(handleButton(sender:))
         }
     }
-    
-    
+
     @objc func handleButton(sender: NSStatusItem?) {
         let event = NSApp.currentEvent!
-        
-        
 
         if event.type == NSEvent.EventType.rightMouseUp {
-            self.showMenu(sender)
+            showMenu(sender)
         } else if event.type == NSEvent.EventType.leftMouseUp {
-            if (popover.isShown) {
-                self.hidePopover(sender)
+            if popover.isShown {
+                hidePopover(sender)
             } else {
-                self.showPopover(sender)
+                showPopover(sender)
             }
-            
         }
-    }
-    
-    @objc func rightMouseDown (sender: AnyObject?) {
-        
     }
 
-    
+    @objc func rightMouseDown(sender _: AnyObject?) {}
+
     @objc func togglePopover(sender: AnyObject?) {
-        if(popover.isShown) {
+        if popover.isShown {
             hidePopover(sender)
-        }
-        else {
+        } else {
             showPopover(sender)
         }
     }
-    
-    func showPopover(_ sender: AnyObject?) {
-        //NSRunningApplication.current.activate(options:NSApplication.ActivationOptions.activateIgnoringOtherApps)
-        guard let statusBarButton = statusItem.button else { return }
-        
 
-    
+    func showPopover(_: AnyObject?) {
+//        NSRunningApplication.current.activate(options:NSApplication.ActivationOptions.activateIgnoringOtherApps)
+        guard let statusBarButton = statusItem.button else { return }
+
         popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
     }
-    
+
     func showMenu(_ sender: AnyObject?) {
-        if (popover.isShown) {
-            self.hidePopover(sender)
+        if popover.isShown {
+            hidePopover(sender)
         }
-        
+
         if let menuItem = lastUpdatedMenuItem {
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "HH:mm:SS"
-            
+
             let ports = ObservablePorts.shared.ports
             if let lastUpdated = ObservablePorts.shared.lastUpdated {
                 menuItem.title = "Last scan \(lastUpdated.timeAgoDisplay()) - \(ports.count) ports"
             }
         }
-        
-        
 
         statusItem.menu = menu
         statusItem.button?.performClick(nil)
         statusItem.menu = nil
     }
-    
+
     func hidePopover(_ sender: AnyObject?) {
         popover.performClose(sender)
     }
-    
-    func handlePopoverRequestClose(_ notification: Notification) {
-        self.hidePopover(nil)
+
+    func handlePopoverRequestClose(_: Notification) {
+        hidePopover(nil)
     }
-    
+
     func mouseEventHandler(_ event: NSEvent?) {
-        if(popover.isShown) {
+        if popover.isShown {
             hidePopover(event!)
         }
     }

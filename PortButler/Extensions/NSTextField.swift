@@ -6,12 +6,12 @@
 //  Copyright © 2020 Albin Ekblom. All rights reserved.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 extension NSTextField { // << workaround !!!
-    open override var focusRingType: NSFocusRingType {
+    override open var focusRingType: NSFocusRingType {
         get { .none }
-        set { }
+        set {}
     }
 }

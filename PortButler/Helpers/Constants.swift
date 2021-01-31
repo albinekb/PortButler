@@ -16,4 +16,3 @@ struct PortConstants {
 extension PortConstants {
     static let portRangeFormatted = String(PortConstants.lowerLimit) + "-" + String(PortConstants.upperLimit)
 }
-

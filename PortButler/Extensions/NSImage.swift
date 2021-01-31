@@ -6,10 +6,10 @@
 //  Copyright © 2020 Albin Ekblom. All rights reserved.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
-//extension NSImage {
+// extension NSImage {
 //    func tint(color: NSColor) -> NSImage {
 //        let image = self.copy() as! NSImage
 //        image.lockFocus()
@@ -23,18 +23,18 @@ import AppKit
 //
 //        return image
 //    }
-//}
+// }
 
 extension NSImage {
-   func image(withTintColor tintColor: NSColor) -> NSImage {
-       guard isTemplate else { return self }
-       guard let copiedImage = self.copy() as? NSImage else { return self }
-       copiedImage.lockFocus()
-       tintColor.set()
-       let imageBounds = NSMakeRect(0, 0, copiedImage.size.width, copiedImage.size.height)
-       imageBounds.fill(using: .sourceAtop)
-       copiedImage.unlockFocus()
-       copiedImage.isTemplate = false
-       return copiedImage
-   }
+    func image(withTintColor tintColor: NSColor) -> NSImage {
+        guard isTemplate else { return self }
+        guard let copiedImage = copy() as? NSImage else { return self }
+        copiedImage.lockFocus()
+        tintColor.set()
+        let imageBounds = NSMakeRect(0, 0, copiedImage.size.width, copiedImage.size.height)
+        imageBounds.fill(using: .sourceAtop)
+        copiedImage.unlockFocus()
+        copiedImage.isTemplate = false
+        return copiedImage
+    }
 }

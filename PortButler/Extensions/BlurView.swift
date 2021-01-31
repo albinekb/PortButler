@@ -6,23 +6,21 @@
 //  Copyright © 2020 Albin Ekblom. All rights reserved.
 //
 
+import Cocoa
 import Foundation
 import SwiftUI
-import Cocoa
 
 struct BlurView: NSViewRepresentable {
-  typealias NSViewType = NSVisualEffectView
+    typealias NSViewType = NSVisualEffectView
 
-  public func makeNSView(context: NSViewRepresentableContext<BlurView>) -> NSVisualEffectView {
-    let view = NSVisualEffectView()
-    view.blendingMode = .behindWindow
-    view.material = .toolTip
-    return view
-  }
+    public func makeNSView(context _: NSViewRepresentableContext<BlurView>) -> NSVisualEffectView {
+        let view = NSVisualEffectView()
+        view.blendingMode = .behindWindow
+        view.material = .toolTip
+        return view
+    }
 
-  public func updateNSView(_ nsView: NSVisualEffectView, context: NSViewRepresentableContext<BlurView>) {
-
-  }
+    public func updateNSView(_: NSVisualEffectView, context _: NSViewRepresentableContext<BlurView>) {}
 }
 
 struct BlurView_Previews: PreviewProvider {
