@@ -12,6 +12,7 @@ import Combine
 import SwiftUI
 import AppKit
 
+import SwiftSoup
 
 public struct WebBrowserView {
 
@@ -100,15 +101,36 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
     private var webView: WKWebView? = WKWebView(frame: .zero)
     
     public func load(url: URL){
-        guard let webView = self.webView else {return}
-        webView.navigationDelegate = self
-        webView.load(URLRequest(url: url))
-        //webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        
+        
+        do {
+            let contents = try String(contentsOf: url)
+            let doc: Document = try SwiftSoup.parseBodyFragment(contents)
+
+            let title = try doc.title()
+            
+            if title.count > 1 {
+                self.title = title
+                self.isLoading = false
+                self.isDone = true
+            } else {
+                throw "Failed title"
+            }
+        } catch {
+            guard let webView = self.webView else {return}
+            webView.navigationDelegate = self
+            webView.load(URLRequest(url: url))
+            //webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
+            webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        }
+        
     }
+    
+    
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let webView = self.webView else {return}
+     
         if keyPath == "title" {
             guard let title = webView.title else {
                 self.title = "Error"
@@ -120,6 +142,7 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
             self.estimatedProgress = webView.estimatedProgress
         }
     }
+    
     public func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
         self.isLoading = false
         guard let title = webView.title else {
@@ -147,15 +170,19 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
     }
 }
 
+extension String: Error {}
+
+
 struct BrowserTitleView: View {
     let NC = NotificationCenter.default
     var port: Int
     @ObservedObject private var webView = ObservableWebView()
+    @State var title  = ""
     
     var body: some View {
         AnyView(
             Group{
-                if self.webView.isLoading  {
+                if self.webView.isLoading && self.title.count < 2  {
                     ProgressIndicator{
                         $0.style = .spinning
                         $0.sizeToFit()
@@ -164,7 +191,12 @@ struct BrowserTitleView: View {
                         $0.controlSize = .small
                     }
                 } else {
-                    Text(self.webView.title).lineLimit(2).font(.system(size: 12, weight: .regular))
+                    if self.title.count > 1 {
+                        Text(self.title).lineLimit(2).font(.system(size: 12, weight: .regular))
+                    } else {
+                        Text(self.webView.title).lineLimit(2).font(.system(size: 12, weight: .regular))
+                    }
+                    
                 }
             }
         ).onAppear{
@@ -178,17 +210,20 @@ struct BrowserTitleView: View {
     }
     
     func handleAppearObserver(_ notification: Notification) {
-        //print("handleObserver")
+        if self.title.count > 1 || self.webView.title.count > 1 {
+            return
+        }
         self.loadWebView()
     }
     
     func loadWebView () {
-        guard let url = URL(string: "http://localhost:" + String(self.port)) else {
+        guard let url = URL(string: "http://127.0.0.1:" + String(self.port)) else {
             print("Error getting URL from port:")
             print(self.port)
             return
         }
         self.webView.load(url: url)
+      
     }
 }
 

@@ -16,6 +16,7 @@
 		3382B6F924D2C4290034A562 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382B6F824D2C4290034A562 /* ProgressIndicator.swift */; };
 		3382B6FB24D2C6CA0034A562 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382B6FA24D2C6CA0034A562 /* Constants.swift */; };
 		338D5A6B24D03EB0008EF9DD /* StatusItemContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */; };
+		339216BE25C63767002D5DD0 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 339216BD25C63767002D5DD0 /* SwiftSoup */; };
 		33BBAFD824D16CEF00CF0711 /* CopyToClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFD724D16CEF00CF0711 /* CopyToClipboardView.swift */; };
 		33BBAFDA24D1734300CF0711 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFD924D1734300CF0711 /* NSTextField.swift */; };
 		33BBAFDC24D17BF000CF0711 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFDB24D17BF000CF0711 /* NSImage.swift */; };
@@ -66,6 +67,7 @@
 			files = (
 				33E37D9424CDD6AE00698877 /* ShellOut in Frameworks */,
 				33F997A024D02DAB008D314B /* Introspect in Frameworks */,
+				339216BE25C63767002D5DD0 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +174,7 @@
 			packageProductDependencies = (
 				33E37D9324CDD6AE00698877 /* ShellOut */,
 				33F9979F24D02DAB008D314B /* Introspect */,
+				339216BD25C63767002D5DD0 /* SwiftSoup */,
 			);
 			productName = HostButler;
 			productReference = 33E3C1A624CDC912005B096B /* PortButler.app */;
@@ -204,6 +207,7 @@
 			packageReferences = (
 				33E37D9224CDD6AE00698877 /* XCRemoteSwiftPackageReference "ShellOut" */,
 				33F9979E24D02DAB008D314B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				339216BC25C63767002D5DD0 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 33E3C1A724CDC912005B096B /* Products */;
 			projectDirPath = "";
@@ -488,6 +492,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		339216BC25C63767002D5DD0 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
 		33E37D9224CDD6AE00698877 /* XCRemoteSwiftPackageReference "ShellOut" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/ShellOut.git";
@@ -516,6 +528,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33F9979E24D02DAB008D314B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		339216BD25C63767002D5DD0 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 339216BC25C63767002D5DD0 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 		33E37D9324CDD6AE00698877 /* ShellOut */ = {
 			isa = XCSwiftPackageProductDependency;
