@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var contentView: ContentView?
     
     @IBAction func refreshAction(_ sender: NSMenuItem)  {
-        self.contentView?.scan()
+        ObservablePorts.shared.scan()
      }
  
 
@@ -48,8 +48,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBar = StatusBarController.init(popover, menu: menu, lastUpdatedMenuItem: lastUpdatedMenuItem)
         
         self.popover.contentViewController?.view.window?.becomeKey()
-        self.contentView?.scan()
-        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -65,7 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     func applicationWillBecomeActive(_ notification: Notification) {
-        self.contentView?.scan()
+        ObservablePorts.shared.scan()
     }
     
     @IBAction func about(_ sender: Any) {

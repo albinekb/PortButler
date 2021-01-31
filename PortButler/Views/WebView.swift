@@ -102,20 +102,24 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
     
     public func load(url: URL){
         
-        
+        DispatchQueue.global().async {
         do {
+            
+
             let contents = try String(contentsOf: url)
             let doc: Document = try SwiftSoup.parseBodyFragment(contents)
 
             let title = try doc.title()
-            
+            DispatchQueue.main.async {
+
             if title.count > 1 {
                 self.title = title
                 self.isLoading = false
                 self.isDone = true
-            } else {
-                throw "Failed title"
+                self.webView = nil
             }
+            }
+            
         } catch {
             guard let webView = self.webView else {return}
             webView.navigationDelegate = self
@@ -123,7 +127,7 @@ class ObservableWebView: NSObject, ObservableObject, WKNavigationDelegate {
             //webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         }
-        
+        }
     }
     
     
@@ -177,12 +181,12 @@ struct BrowserTitleView: View {
     let NC = NotificationCenter.default
     var port: Int
     @ObservedObject private var webView = ObservableWebView()
-    @State var title  = ""
+
     
     var body: some View {
         AnyView(
             Group{
-                if self.webView.isLoading && self.title.count < 2  {
+                if self.webView.isLoading  {
                     ProgressIndicator{
                         $0.style = .spinning
                         $0.sizeToFit()
@@ -191,11 +195,8 @@ struct BrowserTitleView: View {
                         $0.controlSize = .small
                     }
                 } else {
-                    if self.title.count > 1 {
-                        Text(self.title).lineLimit(2).font(.system(size: 12, weight: .regular))
-                    } else {
+                  
                         Text(self.webView.title).lineLimit(2).font(.system(size: 12, weight: .regular))
-                    }
                     
                 }
             }
@@ -210,9 +211,6 @@ struct BrowserTitleView: View {
     }
     
     func handleAppearObserver(_ notification: Notification) {
-        if self.title.count > 1 || self.webView.title.count > 1 {
-            return
-        }
         self.loadWebView()
     }
     
