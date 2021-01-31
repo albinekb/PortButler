@@ -25,7 +25,7 @@
                                         <menuItem title="Last updated" enabled="NO" id="ucc-Fn-imc" userLabel="LastUpdated">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="Refresh" image="NSRefreshTemplate" keyEquivalent="r" id="Hoe-KP-tlP" userLabel="Refresh">
+                                        <menuItem title="Scan ports" image="NSRefreshTemplate" keyEquivalent="r" id="Hoe-KP-tlP" userLabel="Refresh">
                                             <connections>
                                                 <action selector="refreshAction:" target="Voe-Tx-rLC" id="sB3-Ug-dvP"/>
                                             </connections>

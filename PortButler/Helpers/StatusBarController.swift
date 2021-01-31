@@ -37,7 +37,7 @@ class StatusBarController {
     
     fileprivate func initButton () {
         let itemImage =  #imageLiteral(resourceName: "StatusIcon")
-        itemImage.size = NSSize(width: 32, height: 22)
+        itemImage.size = NSSize(width: 16, height: 16)
         itemImage.isTemplate = true
         if let statusBarButton = statusItem.button {
             statusBarButton.image = itemImage
