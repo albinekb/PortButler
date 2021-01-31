@@ -64,10 +64,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillResignActive(_ notification: Notification) {
         statusBar?.hidePopover(nil)
+        if let window = AboutWindowController.defaultController.window {
+            window.close()
+        }
     }
 
     
     func applicationWillBecomeActive(_ notification: Notification) {
         self.contentView?.scan()
     }
+    
+    @IBAction func about(_ sender: Any) {
+        if let window = AboutWindowController.defaultController.window {
+            window.orderFront(self)
+            NSApp.activate(ignoringOtherApps: true)
+        }
+    }
+    
 }

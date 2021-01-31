@@ -18,7 +18,7 @@
                                         <menuItem title="About PortButler" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                                <action selector="about:" target="Voe-Tx-rLC" id="zID-mb-mDy"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="bsK-Lx-zEA"/>
