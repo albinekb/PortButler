@@ -201,7 +201,8 @@ struct BrowserTitleView: View {
                 }
             }
         ).onAppear{
-            self.NC.addObserver(forName: NSNotification.ViewDidAppear, object: nil, queue: nil,
+            self.handleAppearObserver(nil)
+            self.NC.addObserver(forName: NSNotification.RefreshWebView, object: nil, queue: nil,
             using: self.handleAppearObserver)
         }
         .onDisappear{
@@ -210,7 +211,7 @@ struct BrowserTitleView: View {
         }
     }
     
-    func handleAppearObserver(_ notification: Notification) {
+    func handleAppearObserver(_ notification: Notification?) {
         self.loadWebView()
     }
     

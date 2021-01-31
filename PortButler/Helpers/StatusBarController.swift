@@ -11,6 +11,7 @@ import AppKit
 
 extension NSNotification {
     static let PopoverRequestClose = NSNotification.Name.init("PopoverRequestClose")
+    static let RefreshWebView = NSNotification.Name.init("RefreshWebView")
     static let ViewDidAppear = Notification.Name("ViewDidAppear")
 }
 
@@ -88,7 +89,6 @@ class StatusBarController {
 
     
         popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
-        ObservablePorts.shared.scan()
     }
     
     func showMenu(_ sender: AnyObject?) {

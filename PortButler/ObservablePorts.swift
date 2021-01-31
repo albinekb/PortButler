@@ -59,12 +59,14 @@ class ObservablePorts: ObservableObject {
     
     var timer = Timer()
     
-    private func runScan () {
-        if let lastUpdated = self.lastUpdated {
-            let elapsedTime = Date().timeIntervalSince(lastUpdated)
-            if (elapsedTime < 5) {
-                print("Stopping")
-                return
+    private func runScan (_ override: Bool = false) {
+        if override != true {
+            if let lastUpdated = self.lastUpdated {
+                let elapsedTime = Date().timeIntervalSince(lastUpdated)
+                if (elapsedTime < 5) {
+                    print("Stopping")
+                    return
+                }
             }
         }
         
@@ -105,6 +107,7 @@ class ObservablePorts: ObservableObject {
             
             self.lastUpdated = lastUpdated
             self.isLoading = false
+            NotificationCenter.default.post(name: Notification.Name("RefreshWebView"), object: nil)
         } catch {
             self.isLoading = false
             let error = error as! ShellOutError
@@ -113,9 +116,9 @@ class ObservablePorts: ObservableObject {
         }
     }
     
-    func scan () {
+    func scan (_ override: Bool = false) {
         print("Start: scan()")
-        self.runScan()
+        self.runScan(override)
         print("Finish: scan()")
     }
 }

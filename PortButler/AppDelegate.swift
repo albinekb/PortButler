@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var contentView: ContentView?
     
     @IBAction func refreshAction(_ sender: NSMenuItem)  {
-        ObservablePorts.shared.scan()
+        ObservablePorts.shared.scan(true)
      }
  
 
