@@ -43,15 +43,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.animates = false
         popover.behavior = .transient
 
-        
-        if let item = lastUpdatedMenuItem {
-            ObservablePorts.shared.setLastUpdatedItem(item: item)
-        }
-        
-
 
         // Create the Status Bar Item with the Popover
-        statusBar = StatusBarController.init(popover, menu: menu)
+        statusBar = StatusBarController.init(popover, menu: menu, lastUpdatedMenuItem: lastUpdatedMenuItem)
         
         self.popover.contentViewController?.view.window?.becomeKey()
         self.contentView?.scan()

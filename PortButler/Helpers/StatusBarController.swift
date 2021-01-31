@@ -18,6 +18,7 @@ extension NSNotification {
 class StatusBarController {
     //private var statusBar: NSStatusBar
     private var statusItem: NSStatusItem
+    private var lastUpdatedMenuItem: NSMenuItem?
     private var popover: NSPopover
     private var menu: NSMenu?
     
@@ -25,10 +26,11 @@ class StatusBarController {
 
 
     
-    init(_ popover: NSPopover, menu: NSMenu?)
+    init(_ popover: NSPopover, menu: NSMenu?, lastUpdatedMenuItem: NSMenuItem?)
     {
         self.popover = popover
         self.menu = menu
+        self.lastUpdatedMenuItem = lastUpdatedMenuItem
        
 
         statusItem = NSStatusBar.system.statusItem(withLength: 28)
@@ -93,6 +95,18 @@ class StatusBarController {
         if (popover.isShown) {
             self.hidePopover(sender)
         }
+        
+        if let menuItem = lastUpdatedMenuItem {
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "HH:mm:SS"
+            
+            let ports = ObservablePorts.shared.ports
+            if let lastUpdated = ObservablePorts.shared.lastUpdated {
+                menuItem.title = "Last scan \(lastUpdated.timeAgoDisplay()) - \(ports.count) ports"
+            }
+        }
+        
+        
 
         statusItem.menu = menu
         statusItem.button?.performClick(nil)
