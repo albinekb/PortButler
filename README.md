@@ -3,7 +3,7 @@
   <p align="center">An open-source macOS menubar app using netstat</p>
 </p>
 <p align="center">
-  <img align="center" width="387.5px" height="230px" alt="Screenshot" src="https://github.com/albinekb/PortButler/raw/master/.github/preview.png" />
+  <img align="center" width="372px" height="325px" alt="Screenshot" src="https://github.com/albinekb/PortButler/raw/master/.github/preview.png" />
 </p>
 
 # About
