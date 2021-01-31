@@ -73,20 +73,21 @@ struct CopyToClipboard<Child>: View where Child: View {
     var body: some View {
         HStack(alignment: .center){
             AnyView(self.child)
-            Button(action: self.copyString){ ClipboardIcon(isCopied: self.isCopied) }
-                .toolTip("Copy port to clipboard")
+            Button(action: self.copyString){ ClipboardIcon(isCopied: self.isCopied).toolTip("Copy port to clipboard") }
+                
                 .buttonStyle(PlainButtonStyle())
                 .onHover(perform: { hovered in
                     if self.isCopied {
                         if self.isHovered {
                             self.isHovered = false
-//                            NSCursor.pop()
+                            NSCursor.pop()
                         }
                         return
                     }
                     self.isHovered = hovered
-//                    if hovered { NSCursor.pointingHand.push() } else { NSCursor.pop() }
+                    if hovered { NSCursor.dragCopy.push() } else { NSCursor.pop() }
                 })
+                
                 .opacity(self.isHovered ? 0.7 : 1)
         }
     }

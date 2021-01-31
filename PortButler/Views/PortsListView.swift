@@ -47,14 +47,14 @@ struct OpenPageButton: View {
         Button(action: self.action) {
             Image(nsImage:
                 NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName).image(withTintColor: NSColor.controlAccentColor)
-            ).opacity(self.isHovered ? 0.7 : 1)
+            ).opacity(self.isHovered ? 0.7 : 1).toolTip(self.title)
         }
-            .toolTip(self.title)
+            
             .buttonStyle(PlainButtonStyle())
             .onHover(perform: { hovered in
               self.isHovered = hovered
               if hovered {
-                NSCursor.pointingHand.push()
+                NSCursor.dragLink.push()
               } else {
                 NSCursor.pop()
               }
