@@ -21,6 +21,7 @@
 		339216C625C64A3D002D5DD0 /* AboutWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 339216C525C64A3D002D5DD0 /* AboutWindow.storyboard */; };
 		339216C925C64A6D002D5DD0 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339216C825C64A6D002D5DD0 /* AboutWindowController.swift */; };
 		339216CC25C65191002D5DD0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339216CB25C65191002D5DD0 /* Date.swift */; };
+		339216D125C709E7002D5DD0 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339216D025C709E7002D5DD0 /* VisualEffectView.swift */; };
 		33BBAFD824D16CEF00CF0711 /* CopyToClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFD724D16CEF00CF0711 /* CopyToClipboardView.swift */; };
 		33BBAFDA24D1734300CF0711 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFD924D1734300CF0711 /* NSTextField.swift */; };
 		33BBAFDC24D17BF000CF0711 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BBAFDB24D17BF000CF0711 /* NSImage.swift */; };
@@ -51,6 +52,7 @@
 		339216C525C64A3D002D5DD0 /* AboutWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutWindow.storyboard; sourceTree = "<group>"; };
 		339216C825C64A6D002D5DD0 /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		339216CB25C65191002D5DD0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		339216D025C709E7002D5DD0 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		33BBAFD724D16CEF00CF0711 /* CopyToClipboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyToClipboardView.swift; sourceTree = "<group>"; };
 		33BBAFD924D1734300CF0711 /* NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
 		33BBAFDB24D17BF000CF0711 /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				338D5A6A24D03EB0008EF9DD /* StatusItemContainerView.swift */,
 				33BBAFD724D16CEF00CF0711 /* CopyToClipboardView.swift */,
 				3382B6F824D2C4290034A562 /* ProgressIndicator.swift */,
+				339216D025C709E7002D5DD0 /* VisualEffectView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				33BBAFD824D16CEF00CF0711 /* CopyToClipboardView.swift in Sources */,
 				338D5A6B24D03EB0008EF9DD /* StatusItemContainerView.swift in Sources */,
 				339216CC25C65191002D5DD0 /* Date.swift in Sources */,
+				339216D125C709E7002D5DD0 /* VisualEffectView.swift in Sources */,
 				33BBAFDC24D17BF000CF0711 /* NSImage.swift in Sources */,
 				33324AC724CF219C00F80719 /* WebView.swift in Sources */,
 				33E3C1C424CDCE5C005B096B /* StatusBarController.swift in Sources */,

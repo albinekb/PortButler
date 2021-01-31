@@ -80,6 +80,13 @@ class StatusBarController {
             hidePopover(sender)
         }
 
+        self.updateLastUpdateItem()
+        statusItem.menu = menu
+        statusItem.button?.performClick(nil)
+        statusItem.menu = nil
+    }
+    
+    func updateLastUpdateItem () {
         if let menuItem = lastUpdatedMenuItem {
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "HH:mm:SS"
@@ -89,10 +96,6 @@ class StatusBarController {
                 menuItem.title = "Last scan \(lastUpdated.timeAgoDisplay()) - \(ports.count) ports"
             }
         }
-
-        statusItem.menu = menu
-        statusItem.button?.performClick(nil)
-        statusItem.menu = nil
     }
 
     func hidePopover(_ sender: AnyObject?) {

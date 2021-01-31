@@ -36,8 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // popover.contentSize = NSSize(width: 320, height: 160)
         popover.contentViewController?.view = NSHostingView(rootView: contentView)
+        
         // popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
-        popover.animates = false
+        
+        popover.animates = true
         popover.behavior = .transient
 
         // Create the Status Bar Item with the Popover
@@ -50,11 +52,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    func applicationWillResignActive(_: Notification) {
-        statusBar?.hidePopover(nil)
+    func applicationWillResignActive(_ notification: Notification) {
+        statusBar?.handlePopoverRequestClose(notification)
         if let window = AboutWindowController.defaultController.window {
             window.close()
         }
+        
     }
 
     func applicationWillBecomeActive(_: Notification) {

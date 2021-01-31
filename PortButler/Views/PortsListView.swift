@@ -23,10 +23,10 @@ struct RowView<Child>: View where Child: View {
         VStack(alignment: .leading) {
             GeometryReader { geometry in
                 HStack(alignment: .top) {
-                    HStack { AnyView(self.port); Spacer(minLength: 0) }.frame(maxWidth: (geometry.size.width / 12) * 1.4)
-                    HStack { AnyView(self.action) }.frame(width: (geometry.size.width / 12) * 1.5)
                     // HStack{Group(content: self.pid);Spacer(minLength: 0)}.frame(width: geometry.size.width / 4)
                     HStack { AnyView(self.title); Spacer(minLength: 0) }.frame(minWidth: (geometry.size.width / 12) * 7, maxWidth: .infinity)
+                    HStack { AnyView(self.port); Spacer(minLength: 0) }.frame(maxWidth: (geometry.size.width / 12) * 1.4)
+                    HStack { AnyView(self.action) }.frame(width: (geometry.size.width / 12) * 1.5)
                 }
             }
         }
@@ -41,8 +41,9 @@ struct OpenPageButton: View {
     var body: some View {
         Button(action: self.action) {
             Image(nsImage:
-                NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName).image(withTintColor: NSColor.controlAccentColor)
-            ).opacity(self.isHovered ? 0.5 : 1).toolTip(self.title)
+                    NSImage(imageLiteralResourceName: NSImage.followLinkFreestandingTemplateName)
+                    .image(withTintColor: self.isHovered ? NSColor.selectedControlColor : NSColor.controlAccentColor)
+            ).toolTip(self.title)
         }
 
         .buttonStyle(PlainButtonStyle())
